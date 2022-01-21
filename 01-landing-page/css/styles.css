@@ -19,6 +19,10 @@ body {
     min-height: 100vh;
 }
 
+h1, h2, h3, h4, p {
+    margin: 0px;
+}
+
 ul {
     list-style: none;
     margin: 0px;
@@ -30,38 +34,158 @@ a {
 }
 
 img {
-    width: 300px;
+    min-height: 0;
+    min-width: 0;
     object-fit: cover;
+    width: 100%;
+}
+
+button {
+    background-color: #3882F6;
+    border: none;
+    border-radius: 5px;
+    color: #F9FAF8;
+    font-weight: bold;
+    padding: 5px 20px;
 }
 
 
 /* layout */
 .header {
     background-color: #1F2937;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 15px 200px 100px;
 }
 
 .nav {
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }
 
+.tabs {
+    display: flex;
+    gap: 20px;
+}
+
 .banner {
     display: flex;
+    gap: 30px;
+    text-align: left;
+}
+
+.main {
+    padding: 30px 200px 60px;
 }
 
 .cards {
     display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 .quote {
     background-color: #E5E7EB;
+    padding: 100px 300px;
 }
 
 .message {
+    align-items: center;
     background-color: #3882F6;
+    border-radius: 10px;
     display: flex;
+    gap: 150px;
+    justify-content: center;
+    margin: 75px 200px;
+    padding: 25px 50px;
 }
 
 .footer {
     background-color: #1F2937;
+    padding: 25px 0px;
+}
+
+/* nav */
+.nav__logo {
+    color: #F9FAF8;
+    font-size: 24px;
+}
+
+.tabs__link {
+    color: #E5E7EB;
+    font-size: 18px;
+}
+
+/* banner */
+.intro {
+    flex: 1;
+}
+
+.intro__title {
+    color:#F9FAF8;
+    font-size: 48px;
+    font-weight: bolder;
+}
+
+.intro__body {
+    color: #E5E7EB;
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+.banner__img {
+    flex: 1;
+    max-height: 175px;
+}
+
+/* main */
+.main__title {
+    color: #1F2937;
+    font-size: 36px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 0 0 150px;
+}
+
+.card__img {
+    border: 3px solid #3882F6;
+    border-radius: 10px;
+    height: 150px;
+}
+
+.card__desc {
+    font-size: 12px;
+}
+
+/* quote */
+.quote__body {
+    font-size: 36px;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.quote__author {
+    font-weight: bold;
+    text-align: right;
+}
+
+/* message */
+.message-container {
+    color: #E5E7EB;
+    text-align: left;
+}
+
+.message__btn {
+    border: 1px solid #E5E7EB;
+}
+
+/* footer */
+.footer__copyright {
+    color: #E5E7EB;
+    font-size: 12px;
 }
