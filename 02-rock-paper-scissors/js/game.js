@@ -34,7 +34,7 @@ function getPlayerSelection() {
 }
 
 // check if player typed in valid selection
-function ifValidSelection(playerSelection)
+function isValidSelection(playerSelection)
 {
     return CHOICES.includes(playerSelection);
 }
@@ -46,7 +46,7 @@ function play()
     for (let count = 1; count <= NUM__ROUNDS; count++)
     {
         playerSelection = getPlayerSelection();
-        if (ifValidSelection(playerSelection)) {
+        if (isValidSelection(playerSelection)) {
             console.log(playRound(playerSelection, computerPlay()));
         }
         else {
