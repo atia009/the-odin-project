@@ -1,5 +1,5 @@
 // variables
-const CHOICES = ["rock", "paper", "scissor"];
+const CHOICES = [`rock`, `paper`, `scissor`];
 
 // functions
 function getComputerSelection() {
@@ -8,28 +8,21 @@ function getComputerSelection() {
 }
 
 function startRound(playerSelection, computerSelection) {
-    let result;
-    if (playerSelection === computerSelection) {
-        result = `You tied!`;
+    let ifPlayerWins = false;
+    if (playerSelection === computerSelection) return 0;
+    if (playerSelection === `rock` && computerSelection === `scissor`) {
+        ifPlayerWins = true;
+    } else if (playerSelection === `paper` && computerSelection === `rock`) {
+        ifPlayerWins = true;
+    } else if (playerSelection === `scissors` && computerSelection === `paper`) {
+        ifPlayerWins = true;
     }
-    else {
-        if ((playerSelection === "rock" && computerSelection === "scissor") ||
-        (playerSelection === "paper" && computerSelection === "rock") ||
-        (playerSelection === "scissor" && computerSelection === "rock")) {
-            result = `You Win! ${playerSelection} beats ${computerSelection}`;
-        }
-        else {
-            result = `You Lose! ${computerSelection} beats ${playerSelection}`;
-        }
-    }
-    return result;
+    return ifPlayerWins;
 }
-
 
 function startGame()
 {
-    // console.log(startRound(`rock`, getComputerSelection()));
-    console.log(this.dataset.id);
+    console.log(startRound(this.dataset.id, getComputerSelection()));
 }
 
 
