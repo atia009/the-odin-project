@@ -25,16 +25,14 @@ function startRound(playerSelection, computerSelection) {
     return result;
 }
 
-// prompt selection from player
-function getPlayerSelection() {
-}
 
-// play game num__rounds
 function startGame()
 {
-    console.log(startRound(`rock`, getComputerSelection()));
+    // console.log(startRound(`rock`, getComputerSelection()));
+    console.log(this.dataset.id);
 }
 
 
-
-startGame();
+// event listeners
+const buttons = document.querySelectorAll(`button`);
+buttons.forEach(button => button.addEventListener(`click`, startGame));
