@@ -31,13 +31,23 @@ function updateScores(result) {
     } else {
         computer.textContent = ++computerScore;
     }
+}
 
+function updateMessage(result) {
+    const message = document.querySelector(`.result__message`);
+    if (result === 0) {
+        message.textContent = `You tied this round!`;
+        return;
+    }
+    let resultMessage = (result) ? `You won this round!` : `You lost this round!`;
+    message.textContent = resultMessage;
 }
 
 function startGame()
 {
     let result = startRound(this.dataset.id, getComputerSelection());
     updateScores(result);
+    updateMessage(result);
 }
 
 
