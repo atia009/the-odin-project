@@ -20,9 +20,24 @@ function startRound(playerSelection, computerSelection) {
     return ifPlayerWins;
 }
 
+function updateScores(result) {
+    if (result === 0) return;
+    let player = document.querySelector(`.score--player`);
+    let computer = document.querySelector(`.score--computer`);
+    let playerScore = parseInt(player.innerHTML);
+    let computerScore = parseInt(computer.innerHTML);
+    if (result) {
+        player.textContent = ++playerScore;
+    } else {
+        computer.textContent = ++computerScore;
+    }
+
+}
+
 function startGame()
 {
-    console.log(startRound(this.dataset.id, getComputerSelection()));
+    let result = startRound(this.dataset.id, getComputerSelection());
+    updateScores(result);
 }
 
 
