@@ -1,5 +1,6 @@
 // variables
 const CHOICES = [`rock`, `paper`, `scissor`];
+const MAX_POINTS = 5;
 
 // functions
 function getComputerSelection() {
@@ -22,30 +23,52 @@ function startRound(playerSelection, computerSelection) {
 
 function updateScores(result) {
     if (result === 0) return;
-    let player = document.querySelector(`.score--player`);
-    let computer = document.querySelector(`.score--computer`);
-    let playerScore = parseInt(player.innerHTML);
-    let computerScore = parseInt(computer.innerHTML);
+    const player = document.querySelector(`.score--player`);
+    const computer = document.querySelector(`.score--computer`);
     if (result) {
-        player.textContent = ++playerScore;
+        setScore(player, getPlayerScore());
     } else {
-        computer.textContent = ++computerScore;
+        setScore(computer, getComputerScore());
     }
 }
 
+function setScore(participant, score) {
+    participant.textContent = ++score;
+}
+
+
+// fix this function, tied not displaying
 function updateMessage(result) {
-    const message = document.querySelector(`.result__message`);
-    if (result === 0) {
-        message.textContent = `You tied this round!`;
-        return;
+    let message = `You tied this round!`;
+    if (isGameOver()) {
+        message = (getPlayerScore == 5) ? `Game over! You win!!` : `Game over! You lose!!`;
+    } else {
+        message = (result) ? `You win this round!` : `You lose this round!`;
     }
-    let resultMessage = (result) ? `You won this round!` : `You lost this round!`;
+    setMessage(message);
+}
+
+function setMessage(resultMessage) {
+    let message = document.querySelector(`.result__message`);
     message.textContent = resultMessage;
+}
+
+function isGameOver() {
+    return (getPlayerScore() < 5 && getComputerScore() < 5) ? false : true;
+}
+
+function getPlayerScore() {
+    return parseInt(document.querySelector(`.score--player`).innerHTML);
+}
+
+function getComputerScore() {
+    return parseInt(document.querySelector(`.score--computer`).innerHTML);
 }
 
 function startGame()
 {
-    let result = startRound(this.dataset.id, getComputerSelection());
+    if (isGameOver()) return;
+    const result = startRound(this.dataset.id, getComputerSelection());
     updateScores(result);
     updateMessage(result);
 }
