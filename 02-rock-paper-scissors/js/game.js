@@ -10,7 +10,7 @@ function getComputerSelection() {
 
 function startRound(playerSelection, computerSelection) {
     let ifPlayerWins = false;
-    if (playerSelection === computerSelection) return 0;
+    if (playerSelection === computerSelection) return;
     if (playerSelection === `rock` && computerSelection === `scissor`) {
         ifPlayerWins = true;
     } else if (playerSelection === `paper` && computerSelection === `rock`) {
@@ -22,7 +22,7 @@ function startRound(playerSelection, computerSelection) {
 }
 
 function updateScores(result) {
-    if (result === 0) return;
+    if (result === undefined) return;
     const player = document.querySelector(`.score--player`);
     const computer = document.querySelector(`.score--computer`);
     if (result) {
@@ -39,13 +39,14 @@ function setScore(participant, score) {
 
 // fix this function, tied not displaying
 function updateMessage(result) {
-    let message = `You tied this round!`;
-    if (isGameOver()) {
-        message = (getPlayerScore == 5) ? `Game over! You win!!` : `Game over! You lose!!`;
-    } else {
-        message = (result) ? `You win this round!` : `You lose this round!`;
-    }
+    if (isGameOver()) return setMessage(getGameOverMessage());
+    if (result === undefined) return setMessage(`You tied this round!`);
+    message = (result) ? `You win this round!` : `You lose this round!`;
     setMessage(message);
+}
+
+function getGameOverMessage() {
+    return (getPlayerScore() === 5) ? `Game over! You win!!` : `Game over! You lose!!`;
 }
 
 function setMessage(resultMessage) {
