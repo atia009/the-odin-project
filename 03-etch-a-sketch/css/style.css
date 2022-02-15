@@ -1,0 +1,10 @@
+.grid {
+    background-color: blanchedalmond;
+    display: grid;
+    height: 960px;
+    width: 960px;
+}
+
+div {
+    background-color: blue;
+}
