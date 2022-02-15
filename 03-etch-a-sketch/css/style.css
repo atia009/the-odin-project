@@ -1,10 +1,13 @@
 .grid {
     background-color: blanchedalmond;
+    border: 5px solid #000;
     display: grid;
     height: 960px;
     width: 960px;
 }
 
-div {
-    background-color: blue;
+
+/* toggles */
+.color--black {
+    background-color: #000;
 }
