@@ -1,7 +1,6 @@
 // variables
 const MAX_NUMBER = 100;
 const TOTAL_SIDE = 960;
-const normalBtn = document.querySelector(`#normal`);
 
 // functions
 function startController() {
@@ -9,6 +8,7 @@ function startController() {
     setGridColumns();
     setGridRows();
     startHoverController();
+    startButtonFunctionality();
 }
 
 function createGrid(numEachSide = 16) {
@@ -64,8 +64,25 @@ function startTrailHover() {
     console.log("Trail");
 }
 
-function changeProperty(element, property, value) {
-    element.style.property = value;
+function startButtonFunctionality() {
+    const buttons = document.querySelectorAll(`.button`);
+    buttons.forEach(button => button.addEventListener(`click`, startButtonController));
+}
+
+function getUserGridInput() {
+    return prompt(`Please enter size of desired grid between 1 to 100:`);
+}
+
+function isUserInputValid(gridSize) {
+    return (gridSize >= 1 && gridSize <= 100);
+}
+
+function createErrorMessage(number) {
+    alert(`${number} is out of range!`);
+}
+
+function deleteGrid() {
+    document.querySelector(`.grid`).innerHTML = ``;
 }
 
 // event listeners
