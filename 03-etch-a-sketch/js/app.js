@@ -8,6 +8,7 @@ function startController() {
     createGrid();
     setGridColumns();
     setGridRows();
+    startHoverController();
 }
 
 function createGrid(numEachSide = 16) {
@@ -34,6 +35,37 @@ function setGridColumns(columns = 16) {
 function setGridRows(rows = 16) {
     const grid = document.querySelector(`.grid`);
     grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+}
+
+function startHoverController(hoverEffectName) {
+    const squares = document.querySelectorAll(`.grid__square`);
+    switch (hoverEffectName) {
+        case `random`:
+            squares.forEach(square => square.addEventListener(`mouseenter`, startRandomHover));
+            break;
+        case `trail`:
+            squares.forEach(square => square.addEventListener(`mouseenter`, startTrailHover));
+            break;
+        default: 
+            squares.forEach(square => square.addEventListener(`mouseenter`, startNormalHover));
+            break;
+    }
+}
+
+function startNormalHover() {
+    this.style.backgroundColor = `#000`;
+}
+
+function startRandomHover() {
+    console.log("Random");
+}
+
+function startTrailHover() {
+    console.log("Trail");
+}
+
+function changeProperty(element, property, value) {
+    element.style.property = value;
 }
 
 // event listeners
