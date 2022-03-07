@@ -1,16 +1,29 @@
+// variables
+const MAX_NUMBER = 100;
 const TOTAL_SIDE = 960;
+const normalBtn = document.querySelector(`#normal`);
+
+// functions
+function startController() {
+    createGrid();
+    setGridColumns();
+    setGridRows();
+}
 
 function createGrid(numEachSide = 16) {
-    const grid = document.querySelector(`.grid`);
     const numSquares = numEachSide ** 2;
     const side = TOTAL_SIDE / numEachSide;
     for (let count = 1; count <= numSquares; count++) {
-        let newSquare = document.createElement(`div`);
-        newSquare.setAttribute(`style`, `width:${side}px; height:${side}px`);
-        grid.insertAdjacentElement(`beforeend`, newSquare);
+        createSquare(side);
     }
-    setGridColumns();
-    setGridRows();
+}
+
+function createSquare(sideOfSquare) {
+    const grid = document.querySelector(`.grid`);
+    let newSquare = document.createElement(`div`);
+    newSquare.classList.add(`grid__square`);
+    newSquare.setAttribute(`style`, `width:${sideOfSquare}px; height:${sideOfSquare}px`);
+    grid.insertAdjacentElement(`beforeend`, newSquare);
 }
 
 function setGridColumns(columns = 16) {
@@ -23,4 +36,5 @@ function setGridRows(rows = 16) {
     grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 }
 
-createGrid();
+// event listeners
+window.addEventListener(`DOMContentLoaded`, startController);
