@@ -53,20 +53,35 @@ function startHoverController(hoverEffectName) {
 }
 
 function startNormalHover() {
-    this.style.backgroundColor = `#000`;
+    this.style.backgroundColor = `rgb(0, 0, 0)`;
 }
 
 function startRandomHover() {
-    console.log("Random");
 }
 
 function startTrailHover() {
-    console.log("Trail");
 }
 
 function startButtonFunctionality() {
     const buttons = document.querySelectorAll(`.button`);
     buttons.forEach(button => button.addEventListener(`click`, startButtonController));
+}
+
+function startButtonController() {
+    if (this.dataset.class === `clear`) {
+        startClearFunctionality();
+        return;
+    }
+    let gridSize = getUserGridInput();
+    if (!isUserInputValid(gridSize)) {
+        createErrorMessage(gridSize);
+    } else {
+        deleteGrid();
+        createGrid(gridSize);
+        setGridRows(gridSize);
+        setGridColumns(gridSize);
+        startHoverController(this.dataset.class);
+    }
 }
 
 function getUserGridInput() {
@@ -83,6 +98,15 @@ function createErrorMessage(number) {
 
 function deleteGrid() {
     document.querySelector(`.grid`).innerHTML = ``;
+}
+
+function startClearFunctionality() {
+    const squares = document.querySelectorAll(`.grid__square`);
+    squares.forEach(removeHoverStateFromSquare);
+}
+
+function removeHoverStateFromSquare(square) {
+    square.style.backgroundColor = ``;
 }
 
 // event listeners
