@@ -57,9 +57,21 @@ function startNormalHover() {
 }
 
 function startRandomHover() {
+    this.style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
 }
 
 function startTrailHover() {
+    if (this.style.backgroundColor === ``) {
+        this.style.backgroundColor = `rgb(0, 0, 0)`;
+        this.style.opacity = `0.1`;
+    }
+    else {
+        let opacity = parseFloat(this.style.opacity);
+        if (opacity < 1.00) {
+            opacity += 0.10;
+        }
+        this.style.opacity = opacity;
+    }
 }
 
 function startButtonFunctionality() {
@@ -98,6 +110,10 @@ function createErrorMessage(number) {
 
 function deleteGrid() {
     document.querySelector(`.grid`).innerHTML = ``;
+}
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 256);
 }
 
 function startClearFunctionality() {
