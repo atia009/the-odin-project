@@ -16,8 +16,21 @@ function startDivide(num1, num2) {
     return num1 / num2;
 }
 
+function startOperate(operator, num1, num2) {
+    switch (operator) {
+        case "add": 
+            startAdd(num1, num2);
+            break;
+        case "subtract":
+            (startSubtract(num1, num2));
+            break;
+        case "multiply":
+            startMultiply(num1, num2);
+            break;
+        case "divide": 
+            startDivide(num1, num2);
+            break;
+    }
+}
+
 // test
-console.log(startAdd(4, 2));
-console.log(startSubtract(4, 2));
-console.log(startMultiply(4, 2));
-console.log(startDivide(4, 2));
