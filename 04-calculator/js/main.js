@@ -1,3 +1,13 @@
+// globals
+const inputStack = [];
+const operators = {
+    add: `\u002b`,
+    minus: `\u2212`,
+    multiply: `\u00d7`,
+    divide:`\u00f7`,
+    equals: `\u003d`,
+}
+
 
 // functions
 function startAdd(num1, num2) {
@@ -18,16 +28,16 @@ function startDivide(num1, num2) {
 
 function startOperate(operator, num1, num2) {
     switch (operator) {
-        case "add": 
+        case operators.add: 
             startAdd(num1, num2);
             break;
-        case "subtract":
-            (startSubtract(num1, num2));
+        case operators.startSubtract:
+            startSubtract(num1, num2);
             break;
-        case "multiply":
+        case operators.multiply:
             startMultiply(num1, num2);
             break;
-        case "divide": 
+        case operators.divide: 
             startDivide(num1, num2);
             break;
     }
@@ -38,7 +48,6 @@ function startButtonEvent() {
 }
 
 function startButtonFunctionality() {
-    setDisplay(setValueToInt(this.textContent));
 }
 
 
