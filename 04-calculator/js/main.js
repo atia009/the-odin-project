@@ -33,4 +33,30 @@ function startOperate(operator, num1, num2) {
     }
 }
 
+function startButtonEvent() {
+    getButtons().forEach(btn => btn.addEventListener(`click`, startButtonFunctionality));
+}
+
+function startButtonFunctionality() {
+    setDisplay(setValueToInt(this.textContent));
+}
+
+
+function getDisplay() {
+    return document.querySelector(`.calculator__display`);
+}
+
+function getButtons() {
+    return [...document.querySelectorAll(`.button`)]; // convert nodeList to array
+}
+
+function setDisplay(value) {
+    getDisplay().textContent = value;
+}
+
+function setValueToInt(value) {
+    return parseInt(value);
+}
+
 // test
+startButtonEvent();
