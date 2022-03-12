@@ -52,7 +52,7 @@ function startButtonFunctionality() {
     if (isNaN(setValueToInt(this.textContent))) {
         startOperatorFunctionality(this.textContent);
     } else {
-        startOperandFunctionality(this.textContent);
+        startOperandFunctionality(setValueToInt(this.textContent));
     }
 }
 
@@ -80,10 +80,23 @@ function isInputTypesEqual(input1, input2) {
     return isOperator(input1) === isOperator(input2);
 }
 
+function joinNumberInputs(input, previous) {
+    if (previous === 0) return input;
+    return parseInt(`` + previous + input);
+}
+
 function startOperatorFunctionality(operator) {
 }
 
 function startOperandFunctionality(operand) {
+    const previous = getIndexOfFromTop(1);
+    if (isInputTypesEqual(operand, previous)) {
+        inputStack.pop();
+        inputStack.push(joinNumberInputs(operand, previous));
+    } else {
+        inputStack.push(setValueToInt(operand));
+    }
+    setDisplay(getIndexOfFromTop(1));
 }
 
 function hasPreviousOperator() {
