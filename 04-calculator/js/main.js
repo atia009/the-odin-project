@@ -6,6 +6,7 @@ const operators = {
     multiply: `\u00d7`,
     divide:`\u00f7`,
     equals: `\u003d`,
+    clear: `c`,
 }
 
 
@@ -27,20 +28,23 @@ function startDivide(num1, num2) {
 }
 
 function startOperate(operator, num1, num2) {
+    let result;
     switch (operator) {
         case operators.add: 
-            setDisplay(startAdd(num1, num2));
+            result = startAdd(num1, num2);
             break;
-        case operators.startSubtract:
-            setDisplay(startSubtract(num1, num2));
+        case operators.subtract:
+            result = startSubtract(num1, num2);
             break;
         case operators.multiply:
-            setDisplay(startMultiply(num1, num2));
+            result = startMultiply(num1, num2);
             break;
         case operators.divide: 
-            setDisplay(startDivide(num1, num2));
+            result = startDivide(num1, num2);
             break;
     }
+    setDisplay(result);
+    inputStack.push(result);
 }
 
 function startButtonEvent() {
@@ -90,8 +94,11 @@ function startOperatorFunctionality(operator) {
         inputStack.pop();
     }
     if (hasPreviousOperator()) {
-        const previous = getIndexOfFromTop(2);
-        startOperate(previous, getIndexOfFromTop(3), getIndexOfFromTop(1));
+        const previousOperator = getIndexOfFromTop(2);
+        const operand1 = getIndexOfFromTop(3);
+        const operand2 = getIndexOfFromTop(1);
+        removeStackInputs();
+        startOperate(previousOperator, operand1, operand2);
     }
     inputStack.push(operator);
 }
@@ -116,6 +123,12 @@ function getIndexOfFromTop(index) {
     return inputStack[inputStack.length-index];
 }
 
-// test
+function removeStackInputs() {
+    while (inputStack.length) {
+        inputStack.pop();
+    }
+}
+
+
+// function calls
 startButtonEvent();
-console.log(typeof (setValueToInt(inputStack[0])));
