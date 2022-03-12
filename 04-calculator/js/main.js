@@ -86,6 +86,14 @@ function joinNumberInputs(input, previous) {
 }
 
 function startOperatorFunctionality(operator) {
+    if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
+        inputStack.pop();
+    }
+    if (hasPreviousOperator()) {
+        const previous = getIndexOfFromTop(2);
+        startOperate(previous, getIndexOfFromTop(3), getIndexOfFromTop(1));
+    }
+    inputStack.push(operator);
 }
 
 function startOperandFunctionality(operand) {
