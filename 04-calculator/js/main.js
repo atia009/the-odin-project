@@ -6,7 +6,6 @@ const operators = {
     multiply: `\u00d7`,
     divide:`\u00f7`,
     equals: `\u003d`,
-    clear: `c`,
 }
 
 
@@ -41,6 +40,9 @@ function startOperate(operator, num1, num2) {
             break;
         case operators.divide: 
             result = startDivide(num1, num2);
+            break;
+        default:
+            result = 0;
             break;
     }
     setDisplay(result);
@@ -90,10 +92,13 @@ function joinNumberInputs(input, previous) {
 }
 
 function startOperatorFunctionality(operator) {
-    if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
+    if (operator === `c`) {
+        removeStackInputs();
+        startOperate(operator, undefined, undefined);
+        return;
+    } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
         inputStack.pop();
-    }
-    if (hasPreviousOperator()) {
+    } else if (hasPreviousOperator()) {
         const previousOperator = getIndexOfFromTop(2);
         const operand1 = getIndexOfFromTop(3);
         const operand2 = getIndexOfFromTop(1);
