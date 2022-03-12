@@ -33,7 +33,7 @@ function startOperate(operator, num1, num2) {
         case operators.add: 
             result = startAdd(num1, num2);
             break;
-        case operators.subtract:
+        case operators.minus:
             result = startSubtract(num1, num2);
             break;
         case operators.multiply:
