@@ -1,5 +1,5 @@
 // globals
-const inputStack = [];
+const inputStack = [0];
 const operators = {
     add: `\u002b`,
     minus: `\u2212`,
@@ -29,16 +29,16 @@ function startDivide(num1, num2) {
 function startOperate(operator, num1, num2) {
     switch (operator) {
         case operators.add: 
-            startAdd(num1, num2);
+            setDisplay(startAdd(num1, num2));
             break;
         case operators.startSubtract:
-            startSubtract(num1, num2);
+            setDisplay(startSubtract(num1, num2));
             break;
         case operators.multiply:
-            startMultiply(num1, num2);
+            setDisplay(startMultiply(num1, num2));
             break;
         case operators.divide: 
-            startDivide(num1, num2);
+            setDisplay(startDivide(num1, num2));
             break;
     }
 }
@@ -48,8 +48,13 @@ function startButtonEvent() {
 }
 
 function startButtonFunctionality() {
+    // will return NaN if it is an operator
+    if (isNaN(setValueToInt(this.textContent))) {
+        startOperatorFunctionality(this.textContent);
+    } else {
+        startOperandFunctionality(this.textContent);
+    }
 }
-
 
 function getDisplay() {
     return document.querySelector(`.calculator__display`);
@@ -67,5 +72,29 @@ function setValueToInt(value) {
     return parseInt(value);
 }
 
+function isOperator(input) {
+    return (typeof(input) === `string`) ? true : false;
+}
+
+function isInputTypesEqual(input1, input2) {
+    return isOperator(input1) === isOperator(input2);
+}
+
+function startOperatorFunctionality(operator) {
+}
+
+function startOperandFunctionality(operand) {
+}
+
+function hasPreviousOperator() {
+    return getIndexOfFromTop(2) != undefined;
+}
+
+// start from top of stack
+function getIndexOfFromTop(index) {
+    return inputStack[inputStack.length-index];
+}
+
 // test
 startButtonEvent();
+console.log(typeof (setValueToInt(inputStack[0])));
