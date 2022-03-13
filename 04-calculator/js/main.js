@@ -45,6 +45,9 @@ function startOperate(operator, num1, num2) {
             result = 0;
             break;
     }
+    if(isDecimal(result)) {
+        result = Math.round(result * 1000000) / 1000000;
+    }
     setDisplay(result);
     inputStack.push(result);
 }
@@ -134,6 +137,9 @@ function removeStackInputs() {
     }
 }
 
+function isDecimal(number) {
+    return (number % 1 != 0);
+} 
 
 // function calls
 startButtonEvent();
