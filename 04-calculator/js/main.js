@@ -23,6 +23,7 @@ function startMultiply(num1, num2) {
 }
 
 function startDivide(num1, num2) {
+    if (num1 === 0 || num2 === 0) return `error`;
     return num1 / num2;
 }
 
@@ -45,10 +46,13 @@ function startOperate(operator, num1, num2) {
             result = 0;
             break;
     }
-    if(isDecimal(result)) {
+    if(isDecimal(result) && result != `error`) {
         result = Math.round(result * 1000000) / 1000000;
     }
     setDisplay(result);
+    if (result === `error`) {
+        result = 0;
+    }
     inputStack.push(result);
 }
 
