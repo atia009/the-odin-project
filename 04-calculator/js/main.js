@@ -1,5 +1,5 @@
 // globals
-const inputStack = [0];
+const inputStack = [];
 const operators = {
     add: `\u002b`,
     minus: `\u2212`,
@@ -51,7 +51,7 @@ function startOperate(operator, num1 = 0, num2 = 0) {
     if (result === `error`) {
         return;
     }
-    inputStack.push(result.toString());
+    startInputStackPush(result.toString());
 }
 
 function startButtonEvent() {
@@ -59,7 +59,6 @@ function startButtonEvent() {
 }
 
 function startButtonFunctionality() {
-    // will return NaN if it is an operator
     if (isOperator(this.textContent)) {
         startOperatorFunctionality(this.textContent);
     } else {
@@ -76,6 +75,9 @@ function getButtons() {
 }
 
 function setDisplay(value) {
+    if (value === `.`) {
+        value = `0.`;
+    }
     getDisplay().textContent = value;
 }
 
@@ -107,30 +109,30 @@ function joinNumberInputs(input, previous) {
 
 function startOperatorFunctionality(operator) {
     if (operator === `c`) {
-        removeStackInputs();
-        setDisplay(`0.`);
-        inputStack.push(`0`);
-        return;
+        operator = startClearFunctionality();
     } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
         inputStack.pop();
     } else if (hasPreviousOperator()) {
-        const previousOperator = getIndexOfFromTop(2);
-        const operand1 = setValueToInt(getIndexOfFromTop(3));
-        const operand2 = setValueToInt(getIndexOfFromTop(1));
-        removeStackInputs();
-        startOperate(previousOperator, operand1, operand2);
+        startPreviousOperatorFunctionality();
     }
-    inputStack.push(operator);
+    startInputStackPush(operator);
 }
 
 function startOperandFunctionality(operand) {
     const previous = getIndexOfFromTop(1);
-    if (isInputTypesEqual(operand, previous)) {
+    if (hasPreviousPeriod(previous) && isPeriod(operand)) return;
+    // is there a number before it
+    //      add numbers (concatenate)
+    //      then push to stack
+    // else just add to stack
+    //      if it is a period then add 0.
+    if (previous != undefined && isInputTypesEqual(operand, previous)) {
         inputStack.pop();
-        inputStack.push(joinNumberInputs(operand, previous));
+       startInputStackPush((joinNumberInputs(operand, previous)));
     } else {
-        inputStack.push(operand);
+        startInputStackPush(operand);
     }
+    /// do a test to add 0 to . if only . is being displayed
     setDisplay(getIndexOfFromTop(1));
 }
 
@@ -155,6 +157,32 @@ function isDecimal(number) {
 
 function isPeriod(input) {
     return input === `.`;
+}
+
+function hasPreviousPeriod(input) {
+    if (input === undefined) return false;
+    return input.includes(`.`);
+}
+
+function startClearFunctionality() {
+    removeStackInputs();
+    setDisplay(`0.`);
+    return `0.`;
+}
+
+function startPreviousOperatorFunctionality() {
+    const previousOperator = getIndexOfFromTop(2);
+    const operand1 = setValueToInt(getIndexOfFromTop(3));
+    const operand2 = setValueToInt(getIndexOfFromTop(1));
+    removeStackInputs();
+    startOperate(previousOperator, operand1, operand2);
+}
+
+function startInputStackPush(input) {
+    if (input === `.`) {
+        input = `0.`;
+    }
+    inputStack.push(input);
 }
 
 // function calls
