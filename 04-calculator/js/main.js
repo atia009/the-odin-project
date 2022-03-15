@@ -121,18 +121,12 @@ function startOperatorFunctionality(operator) {
 function startOperandFunctionality(operand) {
     const previous = getIndexOfFromTop(1);
     if (hasPreviousPeriod(previous) && isPeriod(operand)) return;
-    // is there a number before it
-    //      add numbers (concatenate)
-    //      then push to stack
-    // else just add to stack
-    //      if it is a period then add 0.
     if (previous != undefined && isInputTypesEqual(operand, previous)) {
         inputStack.pop();
        startInputStackPush((joinNumberInputs(operand, previous)));
     } else {
         startInputStackPush(operand);
     }
-    /// do a test to add 0 to . if only . is being displayed
     setDisplay(getIndexOfFromTop(1));
 }
 
@@ -140,7 +134,6 @@ function hasPreviousOperator() {
     return getIndexOfFromTop(2) != undefined;
 }
 
-// start from top of stack
 function getIndexOfFromTop(index) {
     return inputStack[inputStack.length-index];
 }
@@ -167,7 +160,7 @@ function hasPreviousPeriod(input) {
 function startClearFunctionality() {
     removeStackInputs();
     setDisplay(`0.`);
-    return `0.`;
+    return ``;
 }
 
 function startPreviousOperatorFunctionality() {
