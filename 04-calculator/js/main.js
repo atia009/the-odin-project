@@ -6,6 +6,7 @@ const operators = {
     multiply: `\u00d7`,
     divide:`\u00f7`,
     equals: `\u003d`,
+    clear: `c`,
 }
 
 
@@ -27,7 +28,7 @@ function startDivide(num1, num2) {
     return num1 / num2;
 }
 
-function startOperate(operator, num1, num2) {
+function startOperate(operator, num1 = 0, num2 = 0) {
     let result;
     switch (operator) {
         case operators.add: 
@@ -39,11 +40,8 @@ function startOperate(operator, num1, num2) {
         case operators.multiply:
             result = startMultiply(num1, num2);
             break;
-        case operators.divide: 
+        default: 
             result = startDivide(num1, num2);
-            break;
-        default:
-            result = 0;
             break;
     }
     if(isDecimal(result) && result != `error`) {
@@ -51,9 +49,9 @@ function startOperate(operator, num1, num2) {
     }
     setDisplay(result);
     if (result === `error`) {
-        result = 0;
+        return;
     }
-    inputStack.push(result);
+    inputStack.push(result.toString());
 }
 
 function startButtonEvent() {
@@ -62,10 +60,10 @@ function startButtonEvent() {
 
 function startButtonFunctionality() {
     // will return NaN if it is an operator
-    if (isNaN(setValueToInt(this.textContent))) {
+    if (isOperator(this.textContent)) {
         startOperatorFunctionality(this.textContent);
     } else {
-        startOperandFunctionality(setValueToInt(this.textContent));
+        startOperandFunctionality(this.textContent);
     }
 }
 
@@ -82,11 +80,20 @@ function setDisplay(value) {
 }
 
 function setValueToInt(value) {
-    return parseInt(value);
+    if (isPeriod(value)) return `.`;
+    let newValue;
+    if (value.includes(`.`)) {
+        newValue = parseFloat(value);
+    } else {
+        newValue = parseInt(value);
+    }
+    return newValue;
 }
 
 function isOperator(input) {
-    return (typeof(input) === `string`) ? true : false;
+    const operatorChars = Object.values(operators);
+    const result = operatorChars.find(operator => operator === input);
+    return result != undefined;
 }
 
 function isInputTypesEqual(input1, input2) {
@@ -95,20 +102,21 @@ function isInputTypesEqual(input1, input2) {
 
 function joinNumberInputs(input, previous) {
     if (previous === 0) return input;
-    return parseInt(`` + previous + input);
+    return `` + previous + input;
 }
 
 function startOperatorFunctionality(operator) {
     if (operator === `c`) {
         removeStackInputs();
-        startOperate(operator, undefined, undefined);
+        setDisplay(`0.`);
+        inputStack.push(`0`);
         return;
     } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
         inputStack.pop();
     } else if (hasPreviousOperator()) {
         const previousOperator = getIndexOfFromTop(2);
-        const operand1 = getIndexOfFromTop(3);
-        const operand2 = getIndexOfFromTop(1);
+        const operand1 = setValueToInt(getIndexOfFromTop(3));
+        const operand2 = setValueToInt(getIndexOfFromTop(1));
         removeStackInputs();
         startOperate(previousOperator, operand1, operand2);
     }
@@ -121,7 +129,7 @@ function startOperandFunctionality(operand) {
         inputStack.pop();
         inputStack.push(joinNumberInputs(operand, previous));
     } else {
-        inputStack.push(setValueToInt(operand));
+        inputStack.push(operand);
     }
     setDisplay(getIndexOfFromTop(1));
 }
@@ -144,6 +152,10 @@ function removeStackInputs() {
 function isDecimal(number) {
     return (number % 1 != 0);
 } 
+
+function isPeriod(input) {
+    return input === `.`;
+}
 
 // function calls
 startButtonEvent();
