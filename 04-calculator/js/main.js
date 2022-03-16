@@ -108,7 +108,7 @@ function joinNumberInputs(input, previous) {
 }
 
 function startOperatorFunctionality(operator) {
-    if (operator === `c`) {
+    if (operator === operators.clear) {
         operator = startClearFunctionality();
     } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
         inputStack.pop();
@@ -123,7 +123,10 @@ function startOperandFunctionality(operand) {
     if (hasPreviousPeriod(previous) && isPeriod(operand)) return;
     if (previous != undefined && isInputTypesEqual(operand, previous)) {
         inputStack.pop();
-       startInputStackPush((joinNumberInputs(operand, previous)));
+        startInputStackPush((joinNumberInputs(operand, previous)));
+    } else if (previous === operators.equals) {
+        removeStackInputs();
+        startInputStackPush(operand);
     } else {
         startInputStackPush(operand);
     }
