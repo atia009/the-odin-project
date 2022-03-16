@@ -1,7 +1,7 @@
 
 
 // globals
-const inputStack = [];
+const inputStack = [`0`];
 const operators = {
     add: `\u002b`,
     minus: `\u2212`,
@@ -42,7 +42,7 @@ function startOperate(operator, num1 = 0, num2 = 0) {
         case operators.multiply:
             result = startMultiply(num1, num2);
             break;
-        default: 
+        case operators.divide: 
             result = startDivide(num1, num2);
             break;
     }
@@ -105,15 +105,13 @@ function isInputTypesEqual(input1, input2) {
 }
 
 function joinNumberInputs(input, previous) {
-    if (previous === 0) return input;
+    if (previous === `0`) return input;
     return `` + previous + input;
 }
 
 function startOperatorFunctionality(operator) {
-    if (isInputStackEmpty()) return;
-    if (operator === operators.clear) {
-        operator = startClearFunctionality();
-    } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
+    if (operator === operators.clear) return startClearFunctionality();
+    if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
         inputStack.pop();
     } else if (hasPreviousOperator()) {
         startPreviousOperatorFunctionality();
@@ -166,6 +164,7 @@ function hasPreviousPeriod(input) {
 function startClearFunctionality() {
     removeStackInputs();
     setDisplay(`0.`);
+    startInputStackPush(`0`);
     return ``;
 }
 
