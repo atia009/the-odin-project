@@ -1,3 +1,5 @@
+
+
 // globals
 const inputStack = [];
 const operators = {
@@ -108,6 +110,7 @@ function joinNumberInputs(input, previous) {
 }
 
 function startOperatorFunctionality(operator) {
+    if (isInputStackEmpty()) return;
     if (operator === operators.clear) {
         operator = startClearFunctionality();
     } else if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
@@ -179,6 +182,10 @@ function startInputStackPush(input) {
         input = `0.`;
     }
     inputStack.push(input);
+}
+
+function isInputStackEmpty() {
+    return inputStack.length == 0;
 }
 
 // function calls
