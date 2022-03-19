@@ -1,18 +1,94 @@
-
-
 // globals
-const inputStack = [`0`];
-const operators = {
+const INPUT_STACK = [`0`];
+const OPERATORS = {
     add: `\u002b`,
-    minus: `\u2212`,
-    multiply: `\u00d7`,
+    clear: `c`,
     divide:`\u00f7`,
     equals: `\u003d`,
-    clear: `c`,
+    multiply: `\u00d7`,
+    minus: `\u2212`,
 }
 
 
 // functions
+
+// alteration functions
+function setDisplay(value) {
+    if (value === `.`) {
+        value = `0.`;
+    }
+    getDisplay().textContent = value;
+}
+
+function setStringToNumerical(input) {
+    if (isPeriod(input)) return `.`;
+    if (input.includes(`.`)) return parseFloat(input);
+    return parseInt(input);
+}
+
+function joinNumberInputs(input, previous) {
+    if (previous === `0`) return input;
+    return `` + previous + input;
+}
+
+function removeStackInputs() {
+    while (INPUT_STACK.length) {
+        INPUT_STACK.pop();
+    }
+}
+
+function startClearFunctionality() {
+    removeStackInputs();
+    setDisplay(`0.`);
+    startInputStackPush(`0`);
+}
+
+function startPreviousOperatorFunctionality() {
+    const previousOperator = getIndexOfFromTop(2);
+    const operand1 = setStringToNumerical(getIndexOfFromTop(3));
+    const operand2 = setStringToNumerical(getIndexOfFromTop(1));
+    removeStackInputs();
+    startOperate(previousOperator, operand1, operand2);
+}
+
+function startInputStackPush(input) {
+    if (input === `.`) {
+        input = `0.`;
+    }
+    INPUT_STACK.push(input);
+}
+
+
+// creation functions
+
+// establishment functions
+function startOperate(operator, num1 = 0, num2 = 0) {
+    let result;
+    switch (operator) {
+        case OPERATORS.add: 
+            result = startAdd(num1, num2);
+            break;
+        case OPERATORS.minus:
+            result = startSubtract(num1, num2);
+            break;
+        case OPERATORS.multiply:
+            result = startMultiply(num1, num2);
+            break;
+        case OPERATORS.divide: 
+            result = startDivide(num1, num2);
+            if (result === `error`) {
+                setDisplay(result);
+                return;
+            }
+            break;
+    }
+    if(isDecimal(result) && result != `error`) {
+        result = Math.round(result * 1000000) / 1000000;
+    }
+    setDisplay(result);
+    startInputStackPush(result.toString());
+}
+
 function startAdd(num1, num2) {
     return num1 + num2;
 }
@@ -30,32 +106,6 @@ function startDivide(num1, num2) {
     return num1 / num2;
 }
 
-function startOperate(operator, num1 = 0, num2 = 0) {
-    let result;
-    switch (operator) {
-        case operators.add: 
-            result = startAdd(num1, num2);
-            break;
-        case operators.minus:
-            result = startSubtract(num1, num2);
-            break;
-        case operators.multiply:
-            result = startMultiply(num1, num2);
-            break;
-        case operators.divide: 
-            result = startDivide(num1, num2);
-            break;
-    }
-    if(isDecimal(result) && result != `error`) {
-        result = Math.round(result * 1000000) / 1000000;
-    }
-    setDisplay(result);
-    if (result === `error`) {
-        return;
-    }
-    startInputStackPush(result.toString());
-}
-
 function startButtonEvent() {
     getButtons().forEach(btn => btn.addEventListener(`click`, startButtonFunctionality));
 }
@@ -68,51 +118,10 @@ function startButtonFunctionality() {
     }
 }
 
-function getDisplay() {
-    return document.querySelector(`.calculator__display`);
-}
-
-function getButtons() {
-    return [...document.querySelectorAll(`.button`)]; // convert nodeList to array
-}
-
-function setDisplay(value) {
-    if (value === `.`) {
-        value = `0.`;
-    }
-    getDisplay().textContent = value;
-}
-
-function setValueToInt(value) {
-    if (isPeriod(value)) return `.`;
-    let newValue;
-    if (value.includes(`.`)) {
-        newValue = parseFloat(value);
-    } else {
-        newValue = parseInt(value);
-    }
-    return newValue;
-}
-
-function isOperator(input) {
-    const operatorChars = Object.values(operators);
-    const result = operatorChars.find(operator => operator === input);
-    return result != undefined;
-}
-
-function isInputTypesEqual(input1, input2) {
-    return isOperator(input1) === isOperator(input2);
-}
-
-function joinNumberInputs(input, previous) {
-    if (previous === `0`) return input;
-    return `` + previous + input;
-}
-
 function startOperatorFunctionality(operator) {
-    if (operator === operators.clear) return startClearFunctionality();
+    if (operator === OPERATORS.clear) return startClearFunctionality();
     if (isInputTypesEqual(operator, getIndexOfFromTop(1))) {
-        inputStack.pop();
+        INPUT_STACK.pop();
     } else if (hasPreviousOperator()) {
         startPreviousOperatorFunctionality();
     }
@@ -123,9 +132,9 @@ function startOperandFunctionality(operand) {
     const previous = getIndexOfFromTop(1);
     if (hasPreviousPeriod(previous) && isPeriod(operand)) return;
     if (previous != undefined && isInputTypesEqual(operand, previous)) {
-        inputStack.pop();
+        INPUT_STACK.pop();
         startInputStackPush((joinNumberInputs(operand, previous)));
-    } else if (previous === operators.equals) {
+    } else if (previous === OPERATORS.equals) {
         removeStackInputs();
         startInputStackPush(operand);
     } else {
@@ -134,18 +143,35 @@ function startOperandFunctionality(operand) {
     setDisplay(getIndexOfFromTop(1));
 }
 
-function hasPreviousOperator() {
-    return getIndexOfFromTop(2) != undefined;
+
+
+// obtainment functions
+function getDisplay() {
+    return document.querySelector(`.calculator__display`);
+}
+
+function getButtons() {
+    return [...document.querySelectorAll(`.button`)]; // convert nodeList to array
 }
 
 function getIndexOfFromTop(index) {
-    return inputStack[inputStack.length-index];
+    return INPUT_STACK[INPUT_STACK.length-index];
 }
 
-function removeStackInputs() {
-    while (inputStack.length) {
-        inputStack.pop();
-    }
+
+// true or false functions
+function isOperator(input) {
+    const operatorChars = Object.values(OPERATORS);
+    const result = operatorChars.find(operator => operator === input);
+    return result != undefined;
+}
+
+function isInputTypesEqual(input1, input2) {
+    return isOperator(input1) === isOperator(input2);
+}
+
+function hasPreviousOperator() {
+    return getIndexOfFromTop(2) != undefined;
 }
 
 function isDecimal(number) {
@@ -161,30 +187,8 @@ function hasPreviousPeriod(input) {
     return input.includes(`.`);
 }
 
-function startClearFunctionality() {
-    removeStackInputs();
-    setDisplay(`0.`);
-    startInputStackPush(`0`);
-    return ``;
-}
-
-function startPreviousOperatorFunctionality() {
-    const previousOperator = getIndexOfFromTop(2);
-    const operand1 = setValueToInt(getIndexOfFromTop(3));
-    const operand2 = setValueToInt(getIndexOfFromTop(1));
-    removeStackInputs();
-    startOperate(previousOperator, operand1, operand2);
-}
-
-function startInputStackPush(input) {
-    if (input === `.`) {
-        input = `0.`;
-    }
-    inputStack.push(input);
-}
-
 function isInputStackEmpty() {
-    return inputStack.length == 0;
+    return INPUT_STACK.length == 0;
 }
 
 // function calls
