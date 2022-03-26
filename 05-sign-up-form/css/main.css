@@ -13,9 +13,10 @@ html {
 
 body {
     display: flex;
-    margin: 0 auto;
     font-family: "Roboto", sans-serif;
+    height: 100vh;
     justify-content: space-between;
+    margin: 0 auto;
 }
 
 input, fieldset, legend, button {
@@ -27,4 +28,17 @@ a {
     color: #000;
     font-weight: 500;
     text-decoration: none;
+}
+
+
+/* hero */
+.hero {
+    background-image: url(../assets/banner.jpg);
+    background-position: top;
+    background-size: cover;
+    flex: 1 0 450px;
+}
+
+.main {
+    flex: 1 1 900px;
 }
