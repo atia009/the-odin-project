@@ -12,10 +12,8 @@
 This project explores the use of flexbox for layout design.  Elements are responsive.
 
 <a name="demo"></a>
-## Demo
+## [Demo](https://atia009.github.io/the-odin-project/01-landing-page/)
 ![](demo.png)
-This website is hosted on GitHub and can be accessed through the following link:\
-[About Sushi](https://atia009.github.io/the-odin-project/01-landing-page/)
 
 <a name="template"></a>
 ## Template
