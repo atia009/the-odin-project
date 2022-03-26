@@ -12,8 +12,10 @@ html {
 }
 
 body {
+    display: flex;
     margin: 0 auto;
     font-family: "Roboto", sans-serif;
+    justify-content: space-between;
 }
 
 input, fieldset, legend, button {
