@@ -12,6 +12,7 @@ html {
 }
 
 body {
+    background-color: #f9fafb;
     display: flex;
     font-family: "Roboto", sans-serif;
     height: 100vh;
@@ -62,5 +63,13 @@ a {
 
 /* main */
 .main {
+    display: flex;
+    flex-flow: column nowrap;
     flex: 1 1 900px;
+    justify-content: center;
+    padding: 150px 0px;
+}
+
+.info {
+    margin: 0px 25px auto;
 }
