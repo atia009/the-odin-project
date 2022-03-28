@@ -44,7 +44,7 @@ a {
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 335px;
     padding: 7.5px 0;
 }
 
@@ -66,19 +66,31 @@ a {
     display: flex;
     flex-flow: column nowrap;
     flex: 1 1 900px;
-    justify-content: center;
-    padding: 150px 0px;
+    margin: auto;
+    row-gap: 40px;
 }
 
 .info {
-    margin: 0px 25px auto;
+    font-weight: 600;
+    margin: 0px 25px;
+}
+
+.info__sub-desc {
+    margin: 20px 0px 0px;
+}
+
+.main__account-desc {
+    margin: 15px 25px;
+}
+
+.main__account-link {
+    color: #763d1b;
 }
 
 /* form */
 .form {
     background-color: #fff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    margin: auto 0;
     padding: 25px;
     position: relative;
 }
@@ -94,7 +106,7 @@ a {
 }
 
 .ui__title {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     margin-bottom: 25px;
 }
 
@@ -120,3 +132,25 @@ a {
     position: absolute;
     bottom: -40px;
 }
+
+.control__input {
+    border: 1px solid #E5E7EB;
+    border-radius: 2px;
+}
+
+.control__input:focus {
+    border: 1px solid #4169E1;
+    outline: none;
+    box-shadow: 2px 2px rgba(0,0,0, 0.1);
+}
+
+.error {
+    border: 1px solid #DC143C;
+}
+
+.control__message::after {
+    content: "*Passwords do not match";
+    color: #DC143c;
+    font-size: .75rem;
+}
+
