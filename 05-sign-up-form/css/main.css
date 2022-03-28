@@ -73,3 +73,50 @@ a {
 .info {
     margin: 0px 25px auto;
 }
+
+/* form */
+.form {
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: auto 0;
+    padding: 25px;
+    position: relative;
+}
+
+.ui {
+    border: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 0px;
+    row-gap: 20px;
+    width: 500px;
+}
+
+.ui__title {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.control {
+    flex: 0 0 200px;
+}
+
+.control__label {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.btn-account {
+    background-color: #763d1b;
+    border: 0px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: .75rem;
+    padding: 5px 15px;
+    position: absolute;
+    bottom: -40px;
+}
