@@ -21,30 +21,31 @@
         </div>
         <form action="#" class="form" method="post">
             <fieldset class="ui">
-                <legend class="ui__title">Let's do this! All fields with <abbr title="required">*</abbr> are required</legend>
+                <legend class="ui__title">Let's do this!</legend>
                 <div class="control">
                     <label for="f-name" class="control__label">First Name</label>
-                    <input type="text" name="fname" id="f-name" class="control__input" required>
+                    <input type="text" name="fname" id="f-name" class="control__input">
                 </div>
                 <div class="control">
                     <label for="l-name" class="control__label">Last Name</label>
-                    <input type="text" name="lname" id="l-name" class="control__input" required>
+                    <input type="text" name="lname" id="l-name" class="control__input">
                 </div>
                 <div class="control">
                     <label for="mail" class="control__label">Email</label>
-                    <input type="email" name="email" id="mail" class="control__input" required>
+                    <input type="email" name="email" id="mail" class="control__input">
                 </div>
                 <div class="control">
                     <label for="phone" class="control__label">Phone Number</label>
-                    <input type="tel" name="number" id="phone" class="control__input" required>
+                    <input type="tel" name="number" id="phone" class="control__input">
                 </div>
                 <div class="control">
                     <label for="pass" class="control__label">Password</label>
-                    <input type="password" name="user-pass" id="pass"class="control__input" required>
+                    <input type="password" name="user-pass" id="pass"class="control__input error" required>
+                    <span class="control__message"></span>
                 </div>
                 <div class="control">
                     <label for="confirm-pass" class="control__label">Confirm Password</label>
-                    <input type="password" name="confirm-user-pass" id="confirm-pass" class="control__input" required>
+                    <input type="password" name="confirm-user-pass" id="confirm-pass" class ="control__input error" required>
                 </div>
             </fieldset>
             <button type="submit" class="btn-account">Create Account</button>
