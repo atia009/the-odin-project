@@ -12,8 +12,7 @@
 |   3   |  [Etch-A-Sketch](https://atia009.github.io/the-odin-project/03-etch-a-sketch/) | [Link](https://github.com/atia009/the-odin-project/tree/main/03-etch-a-sketch) | HTML, CSS, JavaScript
 |   4   |  [Calculator](https://atia009.github.io/the-odin-project/04-calculator/) | [Link](https://github.com/atia009/the-odin-project/tree/main/04-calculator) | HTML, CSS, JavaScript |
 |   5   |  [Sign-up Form](https://atia009.github.io/the-odin-project/05-sign-up-form) | [Link](https://github.com/atia009/the-odin-project/tree/main/05-sign-up-form) | HTML, CSS |
-
-
+|   5   |  [Admin Dashboard](https://atia009.github.io/the-odin-project/06-admin-dashboard) | [Link](https://github.com/atia009/the-odin-project/tree/main/06-admin-dashboard) | HTML, CSS |
 
 <a name="links"></a>
 ## Links
