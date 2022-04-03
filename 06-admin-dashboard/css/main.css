@@ -10,3 +10,51 @@
   --bold-color: #001d4f;
   --bg-color: #e2e8f0;
 }
+
+/* global */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: clamp(10px, 10%, 50px);
+  background-color: var(--bg-color);
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  height: 100px;
+  object-fit: cover;
+  width: 100px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+}
+
+button {
+  background-color: var(--btn-color);
+  border: none;
+  border-radius: 12.5px;
+  color: #fff;
+  font-weight: 700;
+  padding: 7.5px 15px;
+}
