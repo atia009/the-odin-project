@@ -1,10 +1,12 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 /* variables */
 :root {
-    --primary-color: #2972b6;
-    --secondary-color: #945cb4;
-    --btn-color: #4ebcff;
-    --hover-color: #002790;
-    --bold-color: #001d4f;
+  --primary-color: #2972b6;
+  --secondary-color: #945cb4;
+  --btn-color: #4ebcff;
+  --hover-color: #002790;
+  --bold-color: #001d4f;
+  --bg-color: #e2e8f0;
 }
-
-
