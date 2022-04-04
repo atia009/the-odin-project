@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  margin: clamp(10px, 10%, 50px);
+  margin: 0;
   background-color: var(--bg-color);
   font-family: "Roboto", sans-serif;
 }
@@ -57,4 +57,87 @@ button {
   color: #fff;
   font-weight: 700;
   padding: 7.5px 15px;
+}
+
+/* layout */
+body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 200px 4fr;
+}
+
+.dashboard {
+  background-color: var(--primary-color);
+  grid-row: 1 / span 2;
+}
+
+.banner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 100px 100px;
+}
+
+.account {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.message__img {
+  grid-row: 1 / span 2;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+}
+
+.family-container {
+  grid-row: 1 / span 3;
+}
+
+.family {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.member {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr;
+}
+
+.member__name {
+  grid-column: 1 / span 2;
+}
+
+.member__desc {
+  grid-column: 1 / span 2;
+}
+
+.actions {
+  display: flex;
+  justify-self: end;
+  grid-column: 2 / span 1;
+}
+
+.cousin {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.cousin__img {
+  grid-row: 1 / span 2;
 }
