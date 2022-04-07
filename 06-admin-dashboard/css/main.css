@@ -40,6 +40,7 @@ ul {
 }
 
 a {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -69,6 +70,7 @@ body {
 .dashboard {
   background-color: var(--primary-color);
   grid-row: 1 / span 2;
+  min-width: 200px;
 }
 
 .banner {
@@ -140,4 +142,43 @@ body {
 
 .cousin__img {
   grid-row: 1 / span 2;
+}
+
+/* ui */
+.ui {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: clamp(20px, 10%, 40px);
+}
+
+.ui__img {
+  filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(175deg)
+    brightness(104%) contrast(102%);
+  height: min(25px, 15%, 10vw);
+  width: min(25px, 15%, 10vw);
+}
+
+.ui__img--header {
+  height: min(40px, 25%, 15vw);
+  margin-left: -7.5px;
+  width: min(40px, 25%, 15vw);
+}
+
+.ui__header {
+  font-size: 1.25rem;
+  margin: 0px 0px 0px -7.5px;
+}
+
+.ui__item {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.ui__item:nth-of-type(1),
+.ui__item:nth-of-type(7) {
+  margin-bottom: 25px;
 }
