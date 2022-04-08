@@ -212,8 +212,8 @@ body {
 }
 
 #search {
-  background-color: #e2e8f0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-color);
+  border: 0.25px solid rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   font-family: "Roboto", sans-serif;
   flex: 1;
