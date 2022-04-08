@@ -79,20 +79,24 @@ body {
 }
 
 .banner {
+  align-items: center;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   grid-template-rows: 60px 1fr;
-  gap: 20px 40px;
+  gap: 5px 30px;
 }
 
 .account {
+  align-items: center;
   display: flex;
   justify-content: flex-end;
+  gap: 30px;
 }
 
 .message {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  gap: 5px 15px;
+  grid-template-columns: 80px 1fr;
 }
 
 .message__img {
@@ -102,7 +106,7 @@ body {
 .controls {
   display: flex;
   justify-content: flex-end;
-  gap: 25px;
+  gap: 30px;
 }
 
 .main {
@@ -188,4 +192,62 @@ body {
 .ui__item:nth-of-type(1),
 .ui__item:nth-of-type(7) {
   margin-bottom: 25px;
+}
+
+/* banner */
+.banner {
+  background-color: #f9f9f9;
+  padding: 15px clamp(30px, 4%, 70px);
+}
+
+.search-form {
+  display: flex;
+  /* align-items: center; */
+  gap: 20px;
+}
+
+.search-form__img {
+  height: 25px;
+  width: 25px;
+}
+
+#search {
+  background-color: #e2e8f0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  font-family: "Roboto", sans-serif;
+  flex: 1;
+  outline: none;
+  padding: 5px 15px;
+}
+
+.account__img {
+  height: 25px;
+  width: 25px;
+}
+
+.account__img--user {
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  width: 50px;
+}
+
+.message__img {
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  width: 80px;
+}
+
+.message__greet {
+  align-self: flex-end;
+  font-weight: 600;
+  font-size: 0.7rem;
+  margin: 0px;
+}
+
+.message__name {
+  align-self: flex-start;
+  margin: 0px;
 }
