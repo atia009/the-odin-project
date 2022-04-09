@@ -61,7 +61,7 @@ button {
 }
 
 button:hover {
-  background-color: #3c79e8;
+  background-color: var(--hover-color);
   cursor: pointer;
 }
 
@@ -141,8 +141,10 @@ body {
 }
 
 .actions {
+  align-items: center;
   display: flex;
   justify-self: end;
+  gap: 20px;
   grid-column: 2 / span 1;
 }
 
@@ -250,4 +252,39 @@ body {
 .message__name {
   align-self: flex-start;
   margin: 0px;
+}
+
+/* family */
+.main {
+  padding: 20px;
+}
+
+.member {
+  background-color: #f9f9f9;
+  border-left: 10px solid var(--secondary-color);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.member__name {
+  margin: 0px;
+}
+
+.member__desc {
+  margin: 0px;
+  opacity: 0.6;
+  width: clamp(30ch, 50%, 75ch);
+}
+
+.action__profile {
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  object-position: top;
+  width: 50px;
+}
+
+.action__img {
+  height: 25px;
+  width: 25px;
 }
