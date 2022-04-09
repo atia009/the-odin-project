@@ -69,7 +69,7 @@ button:hover {
 body {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 200px 4fr;
+  grid-template-rows: 200px 1fr;
 }
 
 .dashboard {
@@ -113,7 +113,7 @@ body {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 20px;
+  gap: 25px;
 }
 
 .family-container {
@@ -123,7 +123,7 @@ body {
 .family {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 20px;
+  gap: 30px;
 }
 
 .member {
@@ -151,6 +151,7 @@ body {
 .cousin {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
 }
 
 .cousin__img {
@@ -271,6 +272,7 @@ body {
 }
 
 .member__desc {
+  font-size: 0.9rem;
   margin: 0px;
   opacity: 0.6;
   width: clamp(30ch, 50%, 75ch);
@@ -287,4 +289,33 @@ body {
 .action__img {
   height: 25px;
   width: 25px;
+}
+
+/* enemies */
+.enemies {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  margin: 0px;
+  padding: 20px 40px 40px;
+}
+
+.enemy:not(:nth-of-type(1)) {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.enemy__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 20px 0px 0px;
+}
+
+.enemy__desc {
+  font-size: 0.75rem;
+  margin: 0px;
+  opacity: 0.6;
 }
