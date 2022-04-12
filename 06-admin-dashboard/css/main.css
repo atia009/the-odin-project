@@ -130,6 +130,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto 1fr;
+  row-gap: 2.5px;
 }
 
 .member__name {
@@ -257,13 +258,14 @@ body {
 
 /* family */
 .main {
-  padding: 20px;
+  padding: 20px 20px 0px;
 }
 
 .member {
   background-color: #f9f9f9;
   border-left: 10px solid var(--secondary-color);
   border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
 }
 
@@ -301,7 +303,7 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
   margin: 0px;
-  padding: 20px 40px 40px;
+  padding: 10px 30px 30px;
 }
 
 .enemy:not(:nth-of-type(1)) {
@@ -318,4 +320,38 @@ body {
   font-size: 0.75rem;
   margin: 0px;
   opacity: 0.6;
+}
+
+/* cousins */
+.cousins {
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  margin: 0px;
+  padding: 30px 0px;
+}
+
+.cousin__img {
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  width: 50px;
+}
+
+.cousin__name {
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin: 0px;
+}
+
+.cousin__number {
+  font-size: 0.8rem;
+  margin: 0px;
+  opacity: 0.4;
 }
