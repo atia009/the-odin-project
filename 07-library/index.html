@@ -5,8 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/coffee.svg" type="image/x-icon">
+    <script src="main.js" defer></script>
     <title>The Barista Library</title>
 </head>
 <body>
+
+    <!-- form -->
+    <form>
+        <fieldset>
+            <legend>Drink Details</legend>
+
+            <!-- name -->
+            <div>
+                <label for="name-input">Name</label>
+                <input type="text" name="name" id="name-input">
+            </div>
+
+            <!-- size -->
+            <fieldset>
+                <legend>Size</legend>
+                <div>
+                    <label for="small">Small</label>
+                    <input type="radio" name="size" id="small">
+                </div>
+                <div>
+                    <label for="med">Medium</label>
+                    <input type="radio" name="size" id="med">
+                </div>
+                <div>
+                    <label for="lrg">Large</label>
+                    <input type="radio" name="size" id="lrg">
+                </div>
+            </fieldset>
+
+            <!-- temperature -->
+            <fieldset>
+                <legend>Temperature</legend>
+                <div>
+                    <label for="cold">Cold</label>
+                    <input type="radio" name="temp" id="cold">
+                </div>
+                <div>
+                    <label for="hot">Hot</label>
+                    <input type="radio" name="temp" id="hot">
+                </div>
+            </fieldset>
+
+            <!-- category -->
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="category-input">
+                    <option value="brewed" selected>Brewed</option>
+                    <option value="espresso">Espresso</option>
+                    <option value="blended">Blended</option>
+                    <option value="teas">Teas</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- tried -->
+            <fieldset>
+                <legend>Have you tried this drink?</legend>
+                <div>
+                    <label for="yes">Yes</label>
+                    <input type="radio" name="tried" id="yes">
+                </div>
+                <div>
+                    <label for="no">No</label>
+                    <input type="radio" name="tried" id="no">
+                </div>
+            </fieldset>
+
+            <!-- comments -->
+            <div class="control">
+                <label for="comment-input">Comments</label>
+                <textarea name="comment" id="comment-input" cols="30" rows="10"></textarea>
+            </div>
+            
+            <button type="button" >Submit</button>
+        </fieldset>
+    </form>
+
 </body>
 </html>
