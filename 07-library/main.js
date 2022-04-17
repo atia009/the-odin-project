@@ -11,13 +11,12 @@ function Drink() {
 // functions
 function getDrinkProperty(property) {
     if (isRadioProperty(property)) return document.querySelector(`input[name="${property}"]:checked`).value;
-    return document.querySelector(`input[name="${property}"]`).value;
+    return document.querySelector(`[name="${property}"]`).value;
 }
 
 function isRadioProperty(property) {
     return property === `size` || property === `temp` || property === `tried`;
 }
-
 
 // test
 const test = new Drink();
