@@ -1,13 +1,11 @@
 // constructor
-function Drink(name, size, temperature, category, tried) {
-    this.name = name;
-    this.size = size;
-    this.temperature = temperature;
-    this.category = category;
-    this.hasTried = tried;
+function Drink() {
+    this.name = null;
+    this.size = null;
+    this.temperature = null;
+    this.category = null;
+    this.hasTried = null;
+    this.comment = null;
 }
 
-// prototypes
-Drink.prototype.setComment = function(comment) {
-    this.comment = comment;
-}
+// functions
