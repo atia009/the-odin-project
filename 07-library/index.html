@@ -18,7 +18,7 @@
             <!-- name -->
             <div>
                 <label for="name-input">Name</label>
-                <input type="text" name="name" id="name-input">
+                <input type="text" name="name" id="name-input" required>
             </div>
 
             <!-- size -->
@@ -26,7 +26,7 @@
                 <legend>Size</legend>
                 <div>
                     <label for="small">Small</label>
-                    <input type="radio" name="size" id="small" value="small">
+                    <input type="radio" name="size" id="small" value="small" required>
                 </div>
                 <div>
                     <label for="med">Medium</label>
@@ -43,7 +43,7 @@
                 <legend>Temperature</legend>
                 <div>
                     <label for="cold">Cold</label>
-                    <input type="radio" name="temp" id="cold" value="cold">
+                    <input type="radio" name="temp" id="cold" value="cold" required>
                 </div>
                 <div>
                     <label for="hot">Hot</label>
@@ -54,8 +54,9 @@
             <!-- category -->
             <div>
                 <label for="category">Category</label>
-                <select name="category" id="category-input">
-                    <option value="brewed" selected>Brewed</option>
+                <select name="category" id="category-input" required>
+                    <option value="">Please select</option>
+                    <option value="brewed">Brewed</option>
                     <option value="espresso">Espresso</option>
                     <option value="blended">Blended</option>
                     <option value="teas">Teas</option>
@@ -68,7 +69,7 @@
                 <legend>Have you tried this drink?</legend>
                 <div>
                     <label for="yes">Yes</label>
-                    <input type="radio" name="tried" id="yes" value="yes">
+                    <input type="radio" name="tried" id="yes" value="yes" required>
                 </div>
                 <div>
                     <label for="no">No</label>
