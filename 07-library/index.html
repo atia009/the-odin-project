@@ -17,13 +17,13 @@
 
             <!-- name -->
             <div>
-                <label for="name-input">Name</label>
+                <label for="name-input">Name<abbr title="This field is mandatory">*</abbr></label>
                 <input type="text" name="name" id="name-input" required>
             </div>
 
             <!-- size -->
             <fieldset>
-                <legend>Size</legend>
+                <legend>Size<abbr title="This field is mandatory">*</abbr></legend>
                 <div>
                     <label for="small">Small</label>
                     <input type="radio" name="size" id="small" value="small" required>
@@ -40,7 +40,7 @@
 
             <!-- temperature -->
             <fieldset>
-                <legend>Temperature</legend>
+                <legend>Temperature<abbr title="This field is mandatory">*</abbr></legend>
                 <div>
                     <label for="cold">Cold</label>
                     <input type="radio" name="temp" id="cold" value="cold" required>
@@ -53,7 +53,7 @@
 
             <!-- category -->
             <div>
-                <label for="category">Category</label>
+                <label for="category">Category<abbr title="This field is mandatory">*</abbr></label>
                 <select name="category" id="category-input" required>
                     <option value="">Please select</option>
                     <option value="brewed">Brewed</option>
@@ -66,7 +66,7 @@
 
             <!-- tried -->
             <fieldset>
-                <legend>Have you tried this drink?</legend>
+                <legend>Have you tried this drink?<abbr title="This field is mandatory">*</abbr></legend>
                 <div>
                     <label for="yes">Yes</label>
                     <input type="radio" name="tried" id="yes" value="yes" required>
