@@ -18,6 +18,9 @@ function isRadioProperty(property) {
     return property === `size` || property === `temp` || property === `tried`;
 }
 
-// test
-const test = new Drink();
-console.log(test);
+function isFormValid() {
+    console.log(document.querySelectorAll(`[required]`));
+}
+
+// event listeners
+document.querySelector(`.form__btn`).addEventListener(`click`, isFormValid);
