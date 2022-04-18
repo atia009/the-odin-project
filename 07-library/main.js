@@ -18,8 +18,18 @@ function isRadioProperty(property) {
     return property === `size` || property === `temp` || property === `tried`;
 }
 
+function getDrink() {
+    return new Drink();
+}
+
 function isFormValid() {
-    console.log(document.querySelectorAll(`[required]`));
+    const controls = document.querySelectorAll(`[required]`);
+    for (let i = 0; i < controls.length; i++) {
+        if (!controls[i].checkValidity()) {
+            return;
+        }
+    }
+    console.log(getDrink());
 }
 
 // event listeners
