@@ -24,7 +24,7 @@ This project is hosted with GitHub pages and can be found at
 
 ## Features
 
-Users can do the follow:
+Users can do the following:
 
 - add a drink
 - remove a drink
