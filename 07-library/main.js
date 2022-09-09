@@ -1,3 +1,5 @@
+let userDrinks = [];
+
 // constructor
 function Drink() {
     this.name = getDrinkProperty(`name`);
@@ -18,18 +20,37 @@ function isRadioProperty(property) {
     return property === `size` || property === `temp` || property === `tried`;
 }
 
-function getDrink() {
+function createDrink() {
     return new Drink();
+}
+
+function addDrinkToUserDrinks(drink) {
+    userDrinks.push(drink);
+}
+
+function startSubmitFunctionality() {
+    userDrinks.push(createDrink());
+    clearForm();
+}
+
+function clearForm() {
+    document.querySelector(`.form`).reset();
 }
 
 function isFormValid() {
     const controls = document.querySelectorAll(`[required]`);
     for (let i = 0; i < controls.length; i++) {
         if (!controls[i].checkValidity()) {
+            alert(`Please fill out ${controls[i].getAttribute(`name`)}`);
             return;
         }
     }
-    console.log(getDrink());
+    startSubmitFunctionality();
+    
+    // For testing output
+    userDrinks.forEach(element => {
+        console.log(element);
+    });
 }
 
 // event listeners
