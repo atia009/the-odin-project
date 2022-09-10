@@ -73,5 +73,16 @@ function isFormValid() {
     });
 }
 
+function toggleFormDrink() {
+    const ui = document.querySelector(`.ui`);
+    if (ui.style.display === `none` || ui.style.display === ``) {
+        ui.style.display = `block`;
+    } else {
+        ui.style.display = `none`;
+    }
+}
+
 // event listeners
 document.querySelector(`.form__btn`).addEventListener(`click`, isFormValid);
+document.querySelector(`.main__btn`).addEventListener(`click`, toggleFormDrink);
+document.querySelector(`.ui__btn`).addEventListener(`click`, toggleFormDrink);
