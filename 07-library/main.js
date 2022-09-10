@@ -13,7 +13,7 @@ function Drink() {
 
 Drink.prototype.createInfo = function() {
     return `<tr>
-        <td><img src="images/minus-circle.svg" alt="Remove drink icon"</img></td>
+        <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon"</img></td>
         <td>${this.name}</td>
         <td>${this.size}</td>
         <td>${this.temperature}</td>
@@ -43,7 +43,7 @@ function addDrinkToUserDrinks(drink) {
 
 function addDrinkToBaristaLibrary(drink) {
     const library = document.querySelector(`.barista-table__drinks`);
-    library.insertAdjacentHTML(`beforeend`, drink);
+    library.insertAdjacentHTML(`afterbegin`, drink);
 }
 
 function createBaristaLibrary() {
@@ -52,10 +52,16 @@ function createBaristaLibrary() {
     });
 }
 
+function removeBaristaLibraryContents() {
+    const library = document.querySelector(`.barista-table__drinks`);
+    library.textContent = ``;
+}
+
 function startSubmitFunctionality() {
     const drink = createDrink();
     userDrinks.push(drink);
     clearForm();
+    removeBaristaLibraryContents();
     createBaristaLibrary();
 }
 
@@ -87,6 +93,13 @@ function toggleFormDrink() {
     } else {
         ui.style.display = `none`;
     }
+}
+
+function startRemoveDrinkFunctionality() {
+    const removeBtns = document.querySelectorAll(`.barista-table__img`);
+    removeBtns.forEach(remove => {
+        console.log(remove);
+    });
 }
 
 // EVENT LISTENERS
