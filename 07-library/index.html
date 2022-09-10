@@ -5,106 +5,112 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/coffee.svg" type="image/x-icon">
+    <link rel="stylesheet" href="main.css">
     <script src="main.js" defer></script>
     <title>The Barista Library</title>
 </head>
 <body>
+    <main class="main">
+        <table class="barista-table">
+            <thead colspan="6">
+                <tr>
+                    <th>Barista Library</th>
+                </tr>
+            </thead>
+            <tbody>
+                <colgroup span="6"></colgroup>
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Temperature</th>
+                    <th>Category</th>
+                    <th>Tried</th>
+                    <th>Comments</th>
+                </tr>
+            </tbody>
+        </table>
+        <button class="main__btn">Add New Drink</button>
+    </main>
 
-    <!-- form -->
-    <form class="form">
-        <fieldset>
-            <legend>Drink Details</legend>
-
-            <!-- name -->
-            <div>
-                <label for="name-input">Name<abbr title="This field is mandatory">*</abbr></label>
-                <input type="text" name="name" id="name-input" required>
-            </div>
-
-            <!-- size -->
+    <section>
+        <button><img src="images/x.svg" alt="exit form icon"></button>
+        <!-- form -->
+        <form class="form">
             <fieldset>
-                <legend>Size<abbr title="This field is mandatory">*</abbr></legend>
+                <legend>Drink Details</legend>
+
+                <!-- name -->
                 <div>
-                    <label for="small">Small</label>
-                    <input type="radio" name="size" id="small" value="small" required>
+                    <label for="name-input">Name<abbr title="This field is mandatory">*</abbr></label>
+                    <input type="text" name="name" id="name-input" required>
                 </div>
+
+                <!-- size -->
+                <fieldset>
+                    <legend>Size<abbr title="This field is mandatory">*</abbr></legend>
+                    <div>
+                        <label for="small">Small</label>
+                        <input type="radio" name="size" id="small" value="small" required>
+                    </div>
+                    <div>
+                        <label for="med">Medium</label>
+                        <input type="radio" name="size" id="med" value="medium">
+                    </div>
+                    <div>
+                        <label for="lrg">Large</label>
+                        <input type="radio" name="size" id="lrg" value="large">
+                    </div>
+                </fieldset>
+
+                <!-- temperature -->
+                <fieldset>
+                    <legend>Temperature<abbr title="This field is mandatory">*</abbr></legend>
+                    <div>
+                        <label for="cold">Cold</label>
+                        <input type="radio" name="temp" id="cold" value="cold" required>
+                    </div>
+                    <div>
+                        <label for="hot">Hot</label>
+                        <input type="radio" name="temp" id="hot" value="hot">
+                    </div>
+                </fieldset>
+
+                <!-- category -->
                 <div>
-                    <label for="med">Medium</label>
-                    <input type="radio" name="size" id="med" value="medium">
+                    <label for="category">Category<abbr title="This field is mandatory">*</abbr></label>
+                    <select name="category" id="category-input" required>
+                        <option value="">Please select</option>
+                        <option value="brewed">Brewed</option>
+                        <option value="espresso">Espresso</option>
+                        <option value="blended">Blended</option>
+                        <option value="teas">Teas</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
-                <div>
-                    <label for="lrg">Large</label>
-                    <input type="radio" name="size" id="lrg" value="large">
+
+                <!-- tried -->
+                <fieldset>
+                    <legend>Have you tried this drink?<abbr title="This field is mandatory">*</abbr></legend>
+                    <div>
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="tried" id="yes" value="yes" required>
+                    </div>
+                    <div>
+                        <label for="no">No</label>
+                        <input type="radio" name="tried" id="no" value="no">
+                    </div>
+                </fieldset>
+
+                <!-- comments -->
+                <div class="control">
+                    <label for="comment-input">Comments</label>
+                    <textarea name="comment" id="comment-input" cols="30" rows="10"></textarea>
                 </div>
+
+                <button type="button" class="form__btn">Submit</button>
             </fieldset>
-
-            <!-- temperature -->
-            <fieldset>
-                <legend>Temperature<abbr title="This field is mandatory">*</abbr></legend>
-                <div>
-                    <label for="cold">Cold</label>
-                    <input type="radio" name="temp" id="cold" value="cold" required>
-                </div>
-                <div>
-                    <label for="hot">Hot</label>
-                    <input type="radio" name="temp" id="hot" value="hot">
-                </div>
-            </fieldset>
-
-            <!-- category -->
-            <div>
-                <label for="category">Category<abbr title="This field is mandatory">*</abbr></label>
-                <select name="category" id="category-input" required>
-                    <option value="">Please select</option>
-                    <option value="brewed">Brewed</option>
-                    <option value="espresso">Espresso</option>
-                    <option value="blended">Blended</option>
-                    <option value="teas">Teas</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <!-- tried -->
-            <fieldset>
-                <legend>Have you tried this drink?<abbr title="This field is mandatory">*</abbr></legend>
-                <div>
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="tried" id="yes" value="yes" required>
-                </div>
-                <div>
-                    <label for="no">No</label>
-                    <input type="radio" name="tried" id="no" value="no">
-                </div>
-            </fieldset>
-
-            <!-- comments -->
-            <div class="control">
-                <label for="comment-input">Comments</label>
-                <textarea name="comment" id="comment-input" cols="30" rows="10"></textarea>
-            </div>
-
-            <button type="button" class="form__btn">Submit</button>
-        </fieldset>
-    </form>
-
-    <table class="barista-table">
-        <thead colspan="6">
-            <tr>
-                <th>Barista Library</th>
-            </tr>
-        </thead>
-        <tbody>
-            <colgroup span="6"></colgroup>
-            <tr>
-                <th>Name</th>
-                <th>Size</th>
-                <th>Temperature</th>
-                <th>Category</th>
-                <th>Tried</th>
-                <th>Comments</th>
-            </tr>
-        </tbody>
-    </table>
+        </form>
+    </section>
 
 </body>
 </html>
