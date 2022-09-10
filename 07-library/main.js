@@ -10,6 +10,17 @@ function Drink() {
     this.comment = getDrinkProperty(`comment`);
 }
 
+Drink.prototype.createInfo = function() {
+    return `<tr>
+        <td>${this.name}</td>
+        <td>${this.size}</td>
+        <td>${this.temperature}</td>
+        <td>${this.category}</td>
+        <td>${this.hasTried}</td>
+        <td>${this.comment}</td>
+    </tr>`
+}
+
 // functions
 function getDrinkProperty(property) {
     if (isRadioProperty(property)) return document.querySelector(`input[name="${property}"]:checked`).value;
@@ -28,14 +39,23 @@ function addDrinkToUserDrinks(drink) {
     userDrinks.push(drink);
 }
 
+function addDrinkToBaristaLibrary(drink) {
+    const library = document.querySelector(`.barista-table`);
+    library.insertAdjacentHTML(`beforeend`, drink);
+}
+
 function startSubmitFunctionality() {
-    userDrinks.push(createDrink());
+    const drink = createDrink();
+    const drinkInfo = drink.createInfo();
+    userDrinks.push(drink);
+    addDrinkToBaristaLibrary(drinkInfo);
     clearForm();
 }
 
 function clearForm() {
     document.querySelector(`.form`).reset();
 }
+
 
 function isFormValid() {
     const controls = document.querySelectorAll(`[required]`);
