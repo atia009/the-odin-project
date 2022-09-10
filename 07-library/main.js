@@ -13,7 +13,7 @@ function Drink() {
 
 Drink.prototype.createInfo = function() {
     return `<tr>
-        <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon"</img></td>
+        <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon" data-class="${this.index}"></td>
         <td>${this.name}</td>
         <td>${this.size}</td>
         <td>${this.temperature}</td>
@@ -21,6 +21,10 @@ Drink.prototype.createInfo = function() {
         <td>${this.hasTried}</td>
         <td>${this.comment}</td>
     </tr>`
+}
+
+Drink.prototype.setIndex = function(index) {
+    this.index = index;
 }
 
 // FUNCTIONS
@@ -37,8 +41,23 @@ function createDrink() {
     return new Drink();
 }
 
+function getUserDrinksIndex(drink) {
+    let drinkCount = 0;
+    for (userDrink of userDrinks){
+        if (userDrink.name === drink.name) {
+            break;
+        }
+        drinkCount++;
+    }
+    return drinkCount;
+}
+
 function addDrinkToUserDrinks(drink) {
     userDrinks.push(drink);
+}
+
+function removeDrinkFromUserDrinks(drinkIndex) {
+    userDrinks.splice(drinkIndex, 1);
 }
 
 function addDrinkToBaristaLibrary(drink) {
@@ -46,8 +65,12 @@ function addDrinkToBaristaLibrary(drink) {
     library.insertAdjacentHTML(`afterbegin`, drink);
 }
 
+
 function createBaristaLibrary() {
+    removeBaristaLibraryContents();
     userDrinks.forEach(drink => {
+        const userDrinkIndex = getUserDrinksIndex(drink);
+        drink.setIndex(userDrinkIndex);
         addDrinkToBaristaLibrary(drink.createInfo());
     });
 }
@@ -61,8 +84,13 @@ function startSubmitFunctionality() {
     const drink = createDrink();
     userDrinks.push(drink);
     clearForm();
-    removeBaristaLibraryContents();
     createBaristaLibrary();
+    toggleFormDrink();
+    startRemoveDrinkBtn();
+    // TESTING
+    // userDrinks.forEach(element => {
+    //     console.log(element);
+    // });
 }
 
 function clearForm() {
@@ -79,11 +107,6 @@ function isFormValid() {
         }
     }
     startSubmitFunctionality();
-    
-    // TESTING
-    // userDrinks.forEach(element => {
-    //     console.log(element);
-    // });
 }
 
 function toggleFormDrink() {
@@ -95,11 +118,18 @@ function toggleFormDrink() {
     }
 }
 
-function startRemoveDrinkFunctionality() {
+function startRemoveDrinkBtn() {
     const removeBtns = document.querySelectorAll(`.barista-table__img`);
     removeBtns.forEach(remove => {
-        console.log(remove);
+        remove.addEventListener(`click`, startRemoveDrinkFunctionality);
     });
+}
+
+function startRemoveDrinkFunctionality() {
+    const drinkIndexToRemove = this.dataset.class;
+    removeDrinkFromUserDrinks(drinkIndexToRemove);
+    createBaristaLibrary();
+    startRemoveDrinkBtn();
 }
 
 // EVENT LISTENERS
