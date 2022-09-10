@@ -1,6 +1,7 @@
-let userDrinks = [];
+// GLOBALS
+const userDrinks = [];
 
-// constructor
+// OBJECTS
 function Drink() {
     this.name = getDrinkProperty(`name`);
     this.size = getDrinkProperty(`size`);
@@ -12,6 +13,7 @@ function Drink() {
 
 Drink.prototype.createInfo = function() {
     return `<tr>
+        <td><img src="images/minus-circle.svg" alt="Remove drink icon"</img></td>
         <td>${this.name}</td>
         <td>${this.size}</td>
         <td>${this.temperature}</td>
@@ -21,7 +23,7 @@ Drink.prototype.createInfo = function() {
     </tr>`
 }
 
-// functions
+// FUNCTIONS
 function getDrinkProperty(property) {
     if (isRadioProperty(property)) return document.querySelector(`input[name="${property}"]:checked`).value;
     return document.querySelector(`[name="${property}"]`).value;
@@ -40,16 +42,21 @@ function addDrinkToUserDrinks(drink) {
 }
 
 function addDrinkToBaristaLibrary(drink) {
-    const library = document.querySelector(`.barista-table`);
+    const library = document.querySelector(`.barista-table__drinks`);
     library.insertAdjacentHTML(`beforeend`, drink);
+}
+
+function createBaristaLibrary() {
+    userDrinks.forEach(drink => {
+        addDrinkToBaristaLibrary(drink.createInfo());
+    });
 }
 
 function startSubmitFunctionality() {
     const drink = createDrink();
-    const drinkInfo = drink.createInfo();
     userDrinks.push(drink);
-    addDrinkToBaristaLibrary(drinkInfo);
     clearForm();
+    createBaristaLibrary();
 }
 
 function clearForm() {
@@ -67,10 +74,10 @@ function isFormValid() {
     }
     startSubmitFunctionality();
     
-    // For testing output
-    userDrinks.forEach(element => {
-        console.log(element);
-    });
+    // TESTING
+    // userDrinks.forEach(element => {
+    //     console.log(element);
+    // });
 }
 
 function toggleFormDrink() {
@@ -82,7 +89,7 @@ function toggleFormDrink() {
     }
 }
 
-// event listeners
+// EVENT LISTENERS
 document.querySelector(`.form__btn`).addEventListener(`click`, isFormValid);
 document.querySelector(`.main__btn`).addEventListener(`click`, toggleFormDrink);
 document.querySelector(`.ui__btn`).addEventListener(`click`, toggleFormDrink);
