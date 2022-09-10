@@ -1,10 +1,10 @@
 /* CSS DIRECTORY
         1. =GLOBAL SETTINGS (variables, resets)
-        2. =PRIMARY LAYOUT (body, projects)
-        3. =SECONDARY LAYOUT (header, footer, sidebar)
-        4. =TERTIARY LAYOUT (home, about)
+        2. =PRIMARY LAYOUT (body, main)
+        3. =SECONDARY LAYOUT (ui)
+        4. =TERTIARY LAYOUT (footer)
         5. =TEXT RELATED (headings, paragraphs, lists)
-        6. =GENERAL STYLES (buttons, forms)
+        6. =GENERAL STYLES (buttons, forms, tables)
         7. =GENERAL CLASSES (modifier classes)
         8. =SALIENT FEATURES (images, links, other important features)
         9. =ANIMATIONS
@@ -19,7 +19,7 @@
     --bg-color: #f3f3f3;
 }
 
-*:where(:not(img, svg, video):not(svg *, symbol *)) {
+*:where(:not(img, svg, video, input, textarea, select):not(svg *, symbol *)) {
  all: unset;
  display: revert;
 }
@@ -76,6 +76,10 @@ body {
 /* ===============
   SECONDARY LAYOUT
   =============== */
+
+.ui {
+  display: none;
+}
 
 /* ===============
   TERTIARY LAYOUT
