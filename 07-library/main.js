@@ -14,6 +14,12 @@ function Drink() {
 Drink.prototype.createInfo = function() {
     return `<tr>
         <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon" data-class="${this.index}"></td>
+        <td>
+            <form>
+            <input type="checkbox" id="tried" name="Tried" class="barista-table__check" data-class="${this.index}">
+            <label for="tried">Tried<label>
+            </form>
+        </td>
         <td>${this.name}</td>
         <td>${this.size}</td>
         <td>${this.temperature}</td>
@@ -25,6 +31,18 @@ Drink.prototype.createInfo = function() {
 
 Drink.prototype.setIndex = function(index) {
     this.index = index;
+}
+
+Drink.prototype.setTried = function() {
+    if (this.index == `yes`) {
+        this.index = `no`;
+    } else {
+        this.index = `yes`;
+    }
+}
+
+Drink.prototype.setCheckedStatus = function() {
+    if (this.index == `yes`) return `checked`;
 }
 
 // FUNCTIONS
@@ -73,6 +91,8 @@ function createBaristaLibrary() {
         drink.setIndex(userDrinkIndex);
         addDrinkToBaristaLibrary(drink.createInfo());
     });
+    startRemoveDrinkBtn();
+    startTriedDrinkBtn();
 }
 
 function removeBaristaLibraryContents() {
@@ -86,11 +106,6 @@ function startSubmitFunctionality() {
     clearForm();
     createBaristaLibrary();
     toggleFormDrink();
-    startRemoveDrinkBtn();
-    // TESTING
-    // userDrinks.forEach(element => {
-    //     console.log(element);
-    // });
 }
 
 function clearForm() {
@@ -129,7 +144,15 @@ function startRemoveDrinkFunctionality() {
     const drinkIndexToRemove = this.dataset.class;
     removeDrinkFromUserDrinks(drinkIndexToRemove);
     createBaristaLibrary();
-    startRemoveDrinkBtn();
+}
+
+function startTriedDrinkBtn() {
+    const triedBtns = document.querySelectorAll(`.barista-table__check`);
+    triedBtns.forEach(tried => {
+        if (userDrinks[tried.dataset.class].hasTried === `yes`) {
+            tried.checked = true;
+        }
+    })
 }
 
 // EVENT LISTENERS
