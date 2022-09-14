@@ -34,10 +34,10 @@ Drink.prototype.setIndex = function(index) {
 }
 
 Drink.prototype.setTried = function() {
-    if (this.index == `yes`) {
-        this.index = `no`;
+    if (this.hasTried == `yes`) {
+        this.hasTried = `no`;
     } else {
-        this.index = `yes`;
+        this.hasTried = `yes`;
     }
 }
 
@@ -152,7 +152,13 @@ function startTriedDrinkBtn() {
         if (userDrinks[tried.dataset.class].hasTried === `yes`) {
             tried.checked = true;
         }
+        tried.addEventListener(`click`, startTriedFunctionality);
     })
+}
+
+function startTriedFunctionality() {
+    userDrinks[this.dataset.class].setTried();
+    createBaristaLibrary();
 }
 
 // EVENT LISTENERS
