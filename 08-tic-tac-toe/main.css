@@ -1,0 +1,119 @@
+/* CSS DIRECTORY
+        1. =GLOBAL SETTINGS (variables, resets)
+        2. =PRIMARY LAYOUT (main)
+        3. =SECONDARY LAYOUT 
+        4. =TERTIARY LAYOUT 
+        5. =TEXT RELATED (headings, paragraphs, lists)
+        6. =GENERAL STYLES (buttons, forms, table)
+        7. =GENERAL CLASSES (modifier classes)
+        8. =SALIENT FEATURES (images, links, other important features)
+        9. =ANIMATIONS
+        10.=MEDIA QUERIES
+*/
+
+/* ===============
+   GLOBAL SETTINGS
+   =============== */
+
+*:where(:not(img, svg, video):not(svg *, symbol *)) {
+ all: unset;
+ display: revert;
+}
+
+html {
+ box-sizing: border-box;
+ font-size: 16px;
+ min-width: 375px;
+}
+
+*,
+*::before,
+*::after {
+ box-sizing: inherit;
+}
+
+a,
+button {
+ cursor: revert;
+}
+
+ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+img {
+ max-width: 100%;
+}
+
+:where([contenteditable]) {
+ -moz-user-modify: read-write;
+ -webkit-user-modify: read-write;
+ overflow-wrap: break-word;
+ -webkit-line-break: after-white-space;
+}
+
+:where([draggable="true"]) {
+ -webkit-user-drag: element;
+}
+
+/* ===============
+  PRIMARY LAYOUT
+  =============== */
+
+body {
+ line-height: 1.5;
+ margin: 0 auto;
+ text-align: center;
+}
+
+.gameboard-module {
+  border: 1px solid #000;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  width: 452px;
+}
+
+.square {
+  border: 1px solid #000;
+  flex: 0 0 150px;
+  height: 150px;
+}
+
+/* ===============
+  SECONDARY LAYOUT
+  =============== */
+
+/* ===============
+  TERTIARY LAYOUT
+  =============== */
+
+/* ===============
+  TEXT RELATED
+  =============== */
+
+/* ===============
+  GENERAL STYLES
+  =============== */
+
+td     {
+  border: 1px solid #000;
+}
+
+/* ===============
+  GENERAL CLASSES
+  =============== */
+
+/* ===============
+  SALIENT FEATURES
+  =============== */
+
+/* ===============
+  ANIMATIONS
+  =============== */
+
+/* ===============
+  MEDIA QUERIES
+  =============== */
