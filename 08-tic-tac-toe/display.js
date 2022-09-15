@@ -1,7 +1,32 @@
 const displayController = (function(){
-  let markCount = 0;
+  let squareCount = 0;
   let message;
   let isGameOver = false;
+  const squareCombinations = [
+    {
+      name: `topLeftSquare`,
+      matches: {
+        horizontal: [0, 1, 2],
+        vertical: [0, 3, 6]
+      }
+    },
+    {
+      name: `middleSquare`,
+      matches: {
+        horizontal: [3, 4, 5], 
+        vertical: [1, 4, 7],
+        topLeftDiagonal: [0, 4, 8],
+        topRightDiagonal: [2, 4, 6],
+      }
+    },
+    {
+      name: `botRightSquare`,
+      matches: {
+        horizontal: [6, 7, 8],
+        vertical: [2, 5, 8]
+      }
+    },
+  ]
 
   // cache DOM
   const el = document.querySelector(`.display-module`);
@@ -15,9 +40,11 @@ const displayController = (function(){
     el.innerHTML = templateHTML;
   }
 
-  function updateMarkCount() {
-    if (markCount < 8) {
-      markCount++;
+// start square check after turn 6
+
+  function updateSquareCount() {
+    if (squareCount < 8) {
+      squareCount++;
     } else {
       isGameOver = true;
     }
@@ -28,12 +55,12 @@ const displayController = (function(){
     if (isGameOver) {
       message = `Game Over!`;
     } else {
-      message = `Turn ${markCount + 1}`;
+      message = `Turn ${squareCount + 1}`;
     }
   }
-
+  
   return {
-    updateMarkCount: updateMarkCount
+    updateSquareCount: updateSquareCount
   }
   
 })();
