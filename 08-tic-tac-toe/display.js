@@ -1,5 +1,7 @@
 const displayController = (function(){
   let markCount = 0;
+  let message;
+  let isGameOver = false;
 
   // cache DOM
   const el = document.querySelector(`.display-module`);
@@ -8,16 +10,25 @@ const displayController = (function(){
   render();
   // functions
   function render() {
-    let templateHTML = template.replace(/{{.}}/g, `Game Over`);
+    setMessage();
+    let templateHTML = template.replace(/{{.}}/g, message);
     el.innerHTML = templateHTML;
   }
 
   function updateMarkCount() {
     if (markCount < 8) {
       markCount++;
-      console.log(markCount);
     } else {
-      console.log("game over");
+      isGameOver = true;
+    }
+    render();
+  }
+
+  function setMessage() {
+    if (isGameOver) {
+      message = `Game Over!`;
+    } else {
+      message = `Turn ${markCount + 1}`;
     }
   }
 
