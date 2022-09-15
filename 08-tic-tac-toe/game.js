@@ -21,11 +21,17 @@ const gameBoard = (function(){
 
   function addMark(event) {
     const index = Array.from(document.querySelectorAll(`.square`)).indexOf(event.target.closest(`div`));
-    board.splice(index, 1, mark);
-    updateMark();
-    render();
+    if (isSquareEmpty(index)) {
+      board.splice(index, 1, mark);
+      updateMark();
+      render();
+    }
   };
-  
+
+  function isSquareEmpty(index) {
+    return board[index] === ``;
+  }
+
   function updateMark() {
     mark = (mark === `X`) ? `O` : `X`;
   };
