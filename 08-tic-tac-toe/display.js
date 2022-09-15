@@ -40,11 +40,10 @@ const displayController = (function(){
     el.innerHTML = templateHTML;
   }
 
-// start square check after turn 6
-
   function updateSquareCount() {
     if (squareCount < 8) {
       squareCount++;
+      startSquareCheck();
     } else {
       isGameOver = true;
     }
@@ -58,6 +57,29 @@ const displayController = (function(){
       message = `Turn ${squareCount + 1}`;
     }
   }
+
+  function startSquareCheck() {
+    const board = gameBoard.getBoard();
+    if (board[0] != ``) getSquareCombinations(squareCombinations[0].matches);
+    if (board[4] != ``) getSquareCombinations(squareCombinations[1].matches);
+    if (board[8] != ``) getSquareCombinations(squareCombinations[2].matches);
+  }
+
+  function getSquareCombinations(matches){
+    for (const pattern in matches) {
+      if (hasThreeMatchingSquares(matches[pattern])) {
+        isGameOver = true;
+        break;
+      };
+    }
+  }
+
+  function hasThreeMatchingSquares(squares) {
+    const board = gameBoard.getBoard(); 
+    if (board[squares[0]] === board[squares[1]] && board[squares[0]] === board[squares[2]]) return true;
+    return false;
+  }
+
   
   return {
     updateSquareCount: updateSquareCount
