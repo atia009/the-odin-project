@@ -1,7 +1,7 @@
 /* CSS DIRECTORY
         1. =GLOBAL SETTINGS (variables, resets)
         2. =PRIMARY LAYOUT (main)
-        3. =SECONDARY LAYOUT 
+        3. =SECONDARY LAYOUT (display-module)
         4. =TERTIARY LAYOUT 
         5. =TEXT RELATED (headings, paragraphs, lists)
         6. =GENERAL STYLES (buttons, forms, table)
@@ -86,6 +86,14 @@ body {
   SECONDARY LAYOUT
   =============== */
 
+.display-module {
+  background-color: #f1f1f1f1;
+  border-radius: 5px;
+  padding: 40px 0;
+  margin: 40px auto;
+  width: 452px;
+}
+
 /* ===============
   TERTIARY LAYOUT
   =============== */
@@ -94,11 +102,16 @@ body {
   TEXT RELATED
   =============== */
 
+.header__title {
+  font-size: 2rem;
+  margin: 20px 0px 20px;
+}  
+
 /* ===============
   GENERAL STYLES
   =============== */
 
-td     {
+td {
   border: 1px solid #000;
 }
 
