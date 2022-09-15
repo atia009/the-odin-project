@@ -25,7 +25,7 @@ const gameBoard = (function(){
       board.splice(index, 1, mark);
       updateMark();
       render();
-      displayController.updateMarkCount();
+      displayController.updateSquareCount();
     }
   };
 
@@ -36,6 +36,14 @@ const gameBoard = (function(){
   function updateMark() {
     mark = (mark === `X`) ? `O` : `X`;
   };
+
+  function getBoard() {
+    return board.slice(0);
+  }
+
+  return {
+    getBoard: getBoard,
+  }
 
 })();
 
