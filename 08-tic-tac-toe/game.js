@@ -25,6 +25,7 @@ const gameBoard = (function(){
       board.splice(index, 1, mark);
       updateMark();
       render();
+      displayController.updateMarkCount();
     }
   };
 
