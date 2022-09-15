@@ -6,10 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="main.css">
   <script src="game.js" defer></script>
+  <script src="display.js" defer></script>
   <title>Tic Tac Toe</title>
 </head>
 <body>
-  <h1>Tic Tac Toe</h1>
+  <header class="header">
+    <h1 class="header__title">Tic Tac Toe</h1>
+  </header>
+  <section class="display-module">
+    <script class="display-template" type="text/template">
+      <p>{{.}}</p>
+    </script>
+  </section>
   <main>
     <section class="gameboard-module">
       <script class="gameboard-template" type="text/template">
