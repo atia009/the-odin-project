@@ -81,9 +81,14 @@ const displayController = (function(){
     return false;
   }
 
+  function getIsGameOver() {
+    return isGameOver;
+  }
+
   
   return {
-    updateSquareCount: updateSquareCount
+    updateSquareCount: updateSquareCount, 
+    getIsGameOver: getIsGameOver,
   }
   
 })();

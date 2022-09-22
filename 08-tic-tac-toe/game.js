@@ -22,7 +22,7 @@ const gameBoard = (function(){
 
   function addMark(event) {
     const index = Array.from(document.querySelectorAll(`.square`)).indexOf(event.target.closest(`div`));
-    if (isSquareEmpty(index)) {
+    if (isSquareEmpty(index) && !displayController.getIsGameOver()) {
       board.splice(index, 1, mark);
       updateMark();
       render();
