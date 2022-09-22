@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="main.css">
   <script src="game.js" defer></script>
   <script src="display.js" defer></script>
+  <script src="player.js" defer></script>
   <title>Tic Tac Toe</title>
 </head>
 <body>
@@ -14,15 +15,26 @@
     <h1 class="header__title">Tic Tac Toe</h1>
   </header>
   <section class="display-module">
-    <script class="display-template" type="text/template">
-      <p>{{.}}</p>
-    </script>
+    <section>
+      <p>Player 1(X)</p>
+    </section>
+    <div class="display">
+      <script class="display-template" type="text/template">
+        <p>{{.}}</p>
+      </script>
+    </div>
+    <section>
+      <p>Player 2(O)</p>
+    </section>
   </section>
   <main>
     <section class="gameboard-module">
-      <script class="gameboard-template" type="text/template">
-        <div class="square">{{.}}</div>
-      </script>
+      <button class="start-btn">Start</button>
+      <div class="gameboard">
+        <script class="gameboard-template" type="text/template">
+          <div class="square">{{.}}</div>
+        </script>
+      </div>
     </section>
   </main>
 </body>

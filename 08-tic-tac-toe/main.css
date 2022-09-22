@@ -68,7 +68,7 @@ body {
  text-align: center;
 }
 
-.gameboard-module {
+.gameboard {
   border: 1px solid #000;
   display: flex;
   flex-flow: row wrap;
@@ -87,6 +87,10 @@ body {
   =============== */
 
 .display-module {
+  display: flex;
+}
+
+.display {
   background-color: #f1f1f1f1;
   border-radius: 5px;
   padding: 40px 0;
@@ -113,6 +117,14 @@ body {
 
 td {
   border: 1px solid #000;
+}
+
+button {
+  background-color:#0000cd;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 0 0 20px 0;
 }
 
 /* ===============
