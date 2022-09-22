@@ -5,6 +5,7 @@ const gameBoard = (function(){
   // cache DOM
   const el = document.querySelector(`.gameboard-module`);
   const template = el.querySelector(`.gameboard-template`).innerHTML;
+  const boardTemplate = el.querySelector(`.gameboard`);
 
   // bind events
   el.addEventListener(`click`, addMark);
@@ -16,7 +17,7 @@ const gameBoard = (function(){
     board.forEach(square => {
       templateHTML += template.replace(/{{.}}/g, square);
     });
-    el.innerHTML = templateHTML;
+    boardTemplate.innerHTML = templateHTML;
   };
 
   function addMark(event) {

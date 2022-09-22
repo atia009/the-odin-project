@@ -31,13 +31,14 @@ const displayController = (function(){
   // cache DOM
   const el = document.querySelector(`.display-module`);
   const template = document.querySelector(`.display-template`).innerHTML;
+  const displayTemplate = el.querySelector(`.display`);
 
   render();
   // functions
   function render() {
     setMessage();
     let templateHTML = template.replace(/{{.}}/g, message);
-    el.innerHTML = templateHTML;
+    displayTemplate.innerHTML = templateHTML;
   }
 
   function updateSquareCount() {
