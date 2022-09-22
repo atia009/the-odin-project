@@ -11,23 +11,27 @@
   <title>Tic Tac Toe</title>
 </head>
 <body>
+<!-- header -->
   <header class="header">
     <h1 class="header__title">Tic Tac Toe</h1>
   </header>
-  <section class="display-module">
-    <section>
-      <p>Player 1(X)</p>
-    </section>
-    <div class="display">
-      <script class="display-template" type="text/template">
-        <p>{{.}}</p>
-      </script>
-    </div>
-    <section>
-      <p>Player 2(O)</p>
-    </section>
-  </section>
+
   <main>
+<!-- display -->
+    <section class="display-module">
+      <section>
+        <p>Player 1(X)</p>
+      </section>
+      <div class="display">
+        <script class="display-template" type="text/template">
+          <p>{{.}}</p>
+        </script>
+      </div>
+      <section>
+        <p>Player 2(O)</p>
+      </section>
+    </section>
+<!-- gameboard -->
     <section class="gameboard-module">
       <button class="start-btn">Start</button>
       <div class="gameboard">
@@ -36,6 +40,8 @@
         </script>
       </div>
     </section>
+
   </main>
+
 </body>
 </html>
