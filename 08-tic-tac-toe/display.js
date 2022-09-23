@@ -55,6 +55,7 @@ const displayController = (function(){
     deleteSquareCount();
     isGameOver = false;
     setMessage();
+    render();
   }
 
   function deleteSquareCount() {
