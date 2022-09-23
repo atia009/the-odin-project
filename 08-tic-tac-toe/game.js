@@ -1,14 +1,17 @@
 const gameBoard = (function(){
   const board = [``, ``, ``, ``, ``, ``, ``, ``, ``];
   let mark = `X`;
+  let gameState = false;
 
   // cache DOM
   const el = document.querySelector(`.gameboard-module`);
   const template = el.querySelector(`.gameboard-template`).innerHTML;
   const boardTemplate = el.querySelector(`.gameboard`);
+  const button = el.querySelector(`.start-btn`);
 
   // bind events
   el.addEventListener(`click`, addMark);
+  button.addEventListener(`click`, updateGameState);
 
   render();
   // functions
@@ -22,7 +25,7 @@ const gameBoard = (function(){
 
   function addMark(event) {
     const index = Array.from(document.querySelectorAll(`.square`)).indexOf(event.target.closest(`div`));
-    if (isSquareEmpty(index) && !displayController.getIsGameOver()) {
+    if (isSquareEmpty(index) && !displayController.getIsGameOver() && gameState) {
       board.splice(index, 1, mark);
       updateMark();
       render();
@@ -40,6 +43,23 @@ const gameBoard = (function(){
 
   function getBoard() {
     return board.slice(0);
+  }
+
+  function updateGameState() {
+    if (gameState) {
+      gameState = false;
+    } else {
+      gameState = true;
+      updateButton();
+    }
+  }
+
+  function updateButton() {
+    if (button.textContent === `Start`) {
+      button.textContent = `Restart`;
+    } else {
+      button.textContent = `Start`;
+    }
   }
 
   return {
