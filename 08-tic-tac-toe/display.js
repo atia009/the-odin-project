@@ -2,6 +2,7 @@ const displayController = (function(){
   let squareCount = 0;
   let message;
   let isGameOver = false;
+  let gameState = false;
   const squareCombinations = [
     {
       name: `topLeftSquare`,
@@ -26,12 +27,16 @@ const displayController = (function(){
         vertical: [2, 5, 8]
       }
     },
-  ]
+  ];
 
   // cache DOM
   const el = document.querySelector(`.display-module`);
   const template = document.querySelector(`.display-template`).innerHTML;
   const displayTemplate = el.querySelector(`.display`);
+  const button = el.querySelector(`.display-btn`);
+
+  // bind events
+  button.addEventListener(`click`, updateGameState);
 
   render();
   // functions
@@ -39,7 +44,30 @@ const displayController = (function(){
     setMessage();
     let templateHTML = template.replace(/{{.}}/g, message);
     displayTemplate.innerHTML = templateHTML;
-  }
+  };
+    
+  function updateGameState() {
+    if (gameState) {
+      gameState = false;
+      gameBoard.deleteBoard();
+      deleteDisplayState();
+    } else {
+      gameState = true;
+    }
+    updateButton();
+  };
+
+  function getGameState() {
+    return gameState;
+  };
+
+  function updateButton() {
+    if (button.textContent === `Start`) {
+      button.textContent = `Restart`;
+    } else {
+      button.textContent = `Start`;
+    }
+  };
 
   function updateSquareCount() {
     if (squareCount < 8) {
@@ -49,18 +77,18 @@ const displayController = (function(){
       updateIsGameOver();
     }
     render();
-  }
+  };
 
   function deleteDisplayState() {
     deleteSquareCount();
     isGameOver = false;
     setMessage();
     render();
-  }
+  };
 
   function deleteSquareCount() {
     squareCount = 0;
-  }
+  };
 
   function setMessage() {
     if (isGameOver) {
@@ -75,7 +103,7 @@ const displayController = (function(){
     if (board[0] != ``) getSquareCombinations(squareCombinations[0].matches);
     if (board[4] != ``) getSquareCombinations(squareCombinations[1].matches);
     if (board[8] != ``) getSquareCombinations(squareCombinations[2].matches);
-  }
+  };
 
   function getSquareCombinations(matches){
     for (const pattern in matches) {
@@ -83,18 +111,18 @@ const displayController = (function(){
         updateIsGameOver();
         break;
       };
-    }
-  }
+    };
+  };
 
   function hasThreeMatchingSquares(squares) {
     const board = gameBoard.getBoard(); 
     if (board[squares[0]] === board[squares[1]] && board[squares[0]] === board[squares[2]]) return true;
     return false;
-  }
+  };
 
   function getIsGameOver() {
     return isGameOver;
-  }
+  };
 
   function updateIsGameOver() {
     if (isGameOver) {
@@ -102,13 +130,12 @@ const displayController = (function(){
     } else {
       isGameOver = true;
     }
-  }
+  };
 
-  
   return {
-    deleteDisplayState: deleteDisplayState,
-    updateSquareCount: updateSquareCount, 
+    getGameState: getGameState,
     getIsGameOver: getIsGameOver,
-  }
-  
+    updateSquareCount: updateSquareCount
+  };
+
 })();
