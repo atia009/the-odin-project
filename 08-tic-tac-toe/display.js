@@ -46,9 +46,19 @@ const displayController = (function(){
       squareCount++;
       startSquareCheck();
     } else {
-      isGameOver = true;
+      updateIsGameOver();
     }
     render();
+  }
+
+  function deleteDisplayState() {
+    deleteSquareCount();
+    isGameOver = false;
+    setMessage();
+  }
+
+  function deleteSquareCount() {
+    squareCount = 0;
   }
 
   function setMessage() {
@@ -69,7 +79,7 @@ const displayController = (function(){
   function getSquareCombinations(matches){
     for (const pattern in matches) {
       if (hasThreeMatchingSquares(matches[pattern])) {
-        isGameOver = true;
+        updateIsGameOver();
         break;
       };
     }
@@ -85,8 +95,17 @@ const displayController = (function(){
     return isGameOver;
   }
 
+  function updateIsGameOver() {
+    if (isGameOver) {
+      isGameOver = false;
+    } else {
+      isGameOver = true;
+    }
+  }
+
   
   return {
+    deleteDisplayState: deleteDisplayState,
     updateSquareCount: updateSquareCount, 
     getIsGameOver: getIsGameOver,
   }

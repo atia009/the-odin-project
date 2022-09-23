@@ -10,7 +10,7 @@ const gameBoard = (function(){
   const button = el.querySelector(`.start-btn`);
 
   // bind events
-  el.addEventListener(`click`, addMark);
+  boardTemplate.addEventListener(`click`, addMark);
   button.addEventListener(`click`, updateGameState);
 
   render();
@@ -45,13 +45,23 @@ const gameBoard = (function(){
     return board.slice(0);
   }
 
+  function deleteBoard() {
+    board.forEach((square, index) => {
+      board[index] = ``;
+    });
+    
+  }
+
   function updateGameState() {
     if (gameState) {
       gameState = false;
+      deleteBoard();
+      displayController.deleteDisplayState();
+      render();
     } else {
       gameState = true;
-      updateButton();
     }
+    updateButton();
   }
 
   function updateButton() {
@@ -63,7 +73,7 @@ const gameBoard = (function(){
   }
 
   return {
-    getBoard: getBoard,
+    getBoard: getBoard
   }
 
 })();
