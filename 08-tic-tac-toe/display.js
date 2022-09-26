@@ -1,6 +1,6 @@
 const displayController = (function(){
   let squareCount = 0;
-  let message;
+  let message = `Click to Start`;
   let isGameOver = false;
   let gameState = false;
   const squareCombinations = [
@@ -41,7 +41,6 @@ const displayController = (function(){
   render();
   // functions
   function render() {
-    setMessage();
     let templateHTML = template.replace(/{{.}}/g, message);
     displayTemplate.innerHTML = templateHTML;
   };
@@ -53,6 +52,8 @@ const displayController = (function(){
       deleteDisplayState();
     } else {
       gameState = true;
+      setMessage();
+      render();
     }
     updateButton();
   };
@@ -76,13 +77,14 @@ const displayController = (function(){
     } else {
       updateIsGameOver();
     }
+    setMessage();
     render();
   };
 
   function deleteDisplayState() {
     deleteSquareCount();
     isGameOver = false;
-    setMessage();
+    message = `Click to Start`
     render();
   };
 
