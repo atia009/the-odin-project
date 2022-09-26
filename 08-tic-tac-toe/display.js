@@ -51,6 +51,7 @@ const displayController = (function(){
       gameBoard.deleteBoard();
       deleteDisplayState();
     } else {
+      addPlayer();
       gameState = true;
       setMessage();
       render();
@@ -133,6 +134,12 @@ const displayController = (function(){
       isGameOver = true;
     }
   };
+
+  function addPlayer() {
+    const playerName = prompt(`Enter your name: `);
+    const newPlayer = player(playerName);
+    console.log(newPlayer.getName());
+  } 
 
   return {
     getGameState: getGameState,
