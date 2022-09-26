@@ -3,6 +3,7 @@ const displayController = (function(){
   let message = `Click to Start`;
   let isGameOver = false;
   let gameState = false;
+  const players = [];
   const squareCombinations = [
     {
       name: `topLeftSquare`,
@@ -50,8 +51,10 @@ const displayController = (function(){
       gameState = false;
       gameBoard.deleteBoard();
       deleteDisplayState();
+      removePlayers();
     } else {
-      addPlayer();
+      createPlayer();
+      createPlayer();
       gameState = true;
       setMessage();
       render();
@@ -135,11 +138,20 @@ const displayController = (function(){
     }
   };
 
-  function addPlayer() {
+  function createPlayer() {
     const playerName = prompt(`Enter your name: `);
     const newPlayer = player(playerName);
-    console.log(newPlayer.getName());
+    addPlayer(newPlayer);
   } 
+
+  function addPlayer(playerToAdd) {
+    players.push(playerToAdd);
+  }
+
+  function removePlayers() {
+    players.pop();
+    players.pop();
+  }
 
   return {
     getGameState: getGameState,
