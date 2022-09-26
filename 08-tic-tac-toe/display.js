@@ -35,6 +35,8 @@ const displayController = (function(){
   const template = document.querySelector(`.display-template`).innerHTML;
   const displayTemplate = el.querySelector(`.display`);
   const button = el.querySelector(`.display-btn`);
+  const player1 = el.querySelector(`.player-1`);
+  const player2 = el.querySelector(`.player-2`);
 
   // bind events
   button.addEventListener(`click`, updateGameState);
@@ -45,18 +47,28 @@ const displayController = (function(){
     let templateHTML = template.replace(/{{.}}/g, message);
     displayTemplate.innerHTML = templateHTML;
   };
+
+  function updatePlayers() {
+    if (players.length === 2) {
+      player1.textContent = `${players[0].getName()}(X)`;
+      player2.textContent = `${players[1].getName()}(O)`;
+    } else {
+      player1.textContent = `Player 1(X)`;
+      player2.textContent = `Player 2(O)`;
+    }
+  }
     
   function updateGameState() {
     if (gameState) {
       gameState = false;
       gameBoard.deleteBoard();
       deleteDisplayState();
-      removePlayers();
     } else {
       createPlayer();
       createPlayer();
       gameState = true;
       setMessage();
+      updatePlayers();
       render();
     }
     updateButton();
@@ -90,6 +102,8 @@ const displayController = (function(){
     isGameOver = false;
     message = `Click to Start`
     render();
+    removePlayers();
+    updatePlayers();
   };
 
   function deleteSquareCount() {
