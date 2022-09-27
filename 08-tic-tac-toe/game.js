@@ -46,6 +46,7 @@ const gameBoard = (function(){
     board.forEach((square, index) => {
       board[index] = ``;
     });
+    mark = `X`;
     render();
   };
 
