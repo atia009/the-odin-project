@@ -36,7 +36,7 @@ const displayController = (function(){
   const displayTemplate = el.querySelector(`.display`);
   const button = el.querySelector(`.display-btn`);
   const player1 = el.querySelector(`.player-1`);
-  const player2 = el.querySelector(`.player-2`);
+  const player2 = el.querySelector(`.player-2`);  
 
   // bind events
   button.addEventListener(`click`, updateGameState);
@@ -87,7 +87,7 @@ const displayController = (function(){
   };
 
   function updateSquareCount() {
-    if (squareCount < 8) {
+    if (squareCount < 9) {
       squareCount++;
       startSquareCheck();
     } else {
@@ -100,7 +100,7 @@ const displayController = (function(){
   function deleteDisplayState() {
     deleteSquareCount();
     isGameOver = false;
-    message = `Click to Start`
+    message = `Click to Start`;
     render();
     removePlayers();
     updatePlayers();
@@ -111,9 +111,9 @@ const displayController = (function(){
   };
 
   function setMessage() {
-    if (isGameOver) {
-      message = `Game Over!`;
-    } else {
+    if (isGameOver && !message.includes(`won`)) {
+      message = `Tied!`;
+    } else if (!isGameOver) {
       message = `Turn ${squareCount + 1}`;
     }
   }
@@ -128,6 +128,7 @@ const displayController = (function(){
   function getSquareCombinations(matches){
     for (const pattern in matches) {
       if (hasThreeMatchingSquares(matches[pattern])) {
+        setWinnerMessage(matches[pattern]);
         updateIsGameOver();
         break;
       };
@@ -165,6 +166,15 @@ const displayController = (function(){
   function removePlayers() {
     players.pop();
     players.pop();
+  }
+
+  function setWinnerMessage(squares) {
+    const board = gameBoard.getBoard();
+    if (board[squares[0]] == `X`) {
+      message = `${players[0].getName()} has won!`;
+    } else {
+      message = `${players[1].getName()} has won!`;
+    }
   }
 
   return {
