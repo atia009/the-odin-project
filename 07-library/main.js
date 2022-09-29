@@ -16,6 +16,14 @@ class Drink {
         this._index = value;
     }
 
+    get index() {
+        return this._index;
+    }
+
+    get hasTried() {
+        return this.hasTried;
+    }
+
     toggleHasTried() {
         if (this.hasTried == `yes`) {
             this.hasTried = `no`;
@@ -42,50 +50,6 @@ class Drink {
     </tr>`
     }
 }
-
-// OBJECTS
-// function Drink() {
-//     this.name = getDrinkProperty(`name`);
-//     this.size = getDrinkProperty(`size`);
-//     this.temperature = getDrinkProperty(`temp`);
-//     this.category = getDrinkProperty(`category`);
-//     this.hasTried = getDrinkProperty(`tried`);
-//     this.comment = getDrinkProperty(`comment`);
-// }
-
-// Drink.prototype.createInfo = function() {
-//     return `<tr>
-//         <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon" data-class="${this.index}"></td>
-//         <td>
-//             <form>
-//             <input type="checkbox" id="tried" name="Tried" class="barista-table__check" data-class="${this.index}">
-//             <label for="tried">Tried<label>
-//             </form>
-//         </td>
-//         <td>${this.name}</td>
-//         <td>${this.size}</td>
-//         <td>${this.temperature}</td>
-//         <td>${this.category}</td>
-//         <td>${this.hasTried}</td>
-//         <td>${this.comment}</td>
-//     </tr>`
-// }
-
-// Drink.prototype.setIndex = function(index) {
-//     this.index = index;
-// }
-
-// Drink.prototype.setTried = function() {
-//     if (this.hasTried == `yes`) {
-//         this.hasTried = `no`;
-//     } else {
-//         this.hasTried = `yes`;
-//     }
-// }
-
-// Drink.prototype.setCheckedStatus = function() {
-//     if (this.index == `yes`) return `checked`;
-// }
 
 // FUNCTIONS
 function getDrinkProperty(property) {
@@ -130,7 +94,7 @@ function createBaristaLibrary() {
     removeBaristaLibraryContents();
     userDrinks.forEach(drink => {
         const userDrinkIndex = getUserDrinksIndex(drink);
-        drink.setIndex(userDrinkIndex);
+        drink.index = userDrinkIndex;
         addDrinkToBaristaLibrary(drink.createInfo());
     });
     startRemoveDrinkBtn();
@@ -199,7 +163,7 @@ function startTriedDrinkBtn() {
 }
 
 function startTriedFunctionality() {
-    userDrinks[this.dataset.class].setTried();
+    userDrinks[this.dataset.class].toggleHasTried();
     createBaristaLibrary();
 }
 
