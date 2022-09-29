@@ -1,18 +1,31 @@
 // GLOBALS
 const userDrinks = [];
 
-// OBJECTS
-function Drink() {
-    this.name = getDrinkProperty(`name`);
-    this.size = getDrinkProperty(`size`);
-    this.temperature = getDrinkProperty(`temp`);
-    this.category = getDrinkProperty(`category`);
-    this.hasTried = getDrinkProperty(`tried`);
-    this.comment = getDrinkProperty(`comment`);
-}
+// CLASSES
+class Drink {
+    name = getDrinkProperty(`name`);
+    size = getDrinkProperty(`size`);
+    temperature = getDrinkProperty(`temp`);
+    category = getDrinkProperty(`category`);
+    hasTried = getDrinkProperty(`tried`);
+    comment = getDrinkProperty(`comment`);
+    
+    constructor(){}
+    
+    set index(value) {
+        this._index = value;
+    }
 
-Drink.prototype.createInfo = function() {
-    return `<tr>
+    toggleHasTried() {
+        if (this.hasTried == `yes`) {
+            this.hasTried = `no`;
+        } else {
+            this.hasTried = `yes`;
+        }
+    }
+
+    createInfo() {
+        return `<tr>
         <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon" data-class="${this.index}"></td>
         <td>
             <form>
@@ -27,23 +40,52 @@ Drink.prototype.createInfo = function() {
         <td>${this.hasTried}</td>
         <td>${this.comment}</td>
     </tr>`
-}
-
-Drink.prototype.setIndex = function(index) {
-    this.index = index;
-}
-
-Drink.prototype.setTried = function() {
-    if (this.hasTried == `yes`) {
-        this.hasTried = `no`;
-    } else {
-        this.hasTried = `yes`;
     }
 }
 
-Drink.prototype.setCheckedStatus = function() {
-    if (this.index == `yes`) return `checked`;
-}
+// OBJECTS
+// function Drink() {
+//     this.name = getDrinkProperty(`name`);
+//     this.size = getDrinkProperty(`size`);
+//     this.temperature = getDrinkProperty(`temp`);
+//     this.category = getDrinkProperty(`category`);
+//     this.hasTried = getDrinkProperty(`tried`);
+//     this.comment = getDrinkProperty(`comment`);
+// }
+
+// Drink.prototype.createInfo = function() {
+//     return `<tr>
+//         <td><img class="barista-table__img" src="images/minus-circle.svg" alt="Remove drink icon" data-class="${this.index}"></td>
+//         <td>
+//             <form>
+//             <input type="checkbox" id="tried" name="Tried" class="barista-table__check" data-class="${this.index}">
+//             <label for="tried">Tried<label>
+//             </form>
+//         </td>
+//         <td>${this.name}</td>
+//         <td>${this.size}</td>
+//         <td>${this.temperature}</td>
+//         <td>${this.category}</td>
+//         <td>${this.hasTried}</td>
+//         <td>${this.comment}</td>
+//     </tr>`
+// }
+
+// Drink.prototype.setIndex = function(index) {
+//     this.index = index;
+// }
+
+// Drink.prototype.setTried = function() {
+//     if (this.hasTried == `yes`) {
+//         this.hasTried = `no`;
+//     } else {
+//         this.hasTried = `yes`;
+//     }
+// }
+
+// Drink.prototype.setCheckedStatus = function() {
+//     if (this.index == `yes`) return `checked`;
+// }
 
 // FUNCTIONS
 function getDrinkProperty(property) {
