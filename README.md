@@ -17,6 +17,7 @@
 |  05   |         [Sign-up Form](https://atia009.github.io/the-odin-project/05-sign-up-form)          |    [Link](https://github.com/atia009/the-odin-project/tree/main/05-sign-up-form)     |       HTML, CSS       |
 |  06   |      [Admin Dashboard](https://atia009.github.io/the-odin-project/06-admin-dashboard)       |   [Link](https://github.com/atia009/the-odin-project/tree/main/06-admin-dashboard)   |       HTML, CSS       |
 |  07   |              [Library](https://atia009.github.io/the-odin-project/07-library)               |       [Link](https://github.com/atia009/the-odin-project/tree/main/07-library)       | HTML, CSS, JavaScript |
+|  08   |          [Tic-Tac-Toe](https://atia009.github.io/the-odin-project/07-library)               |       [Link](https://github.com/atia009/the-odin-project/tree/main/08-tic-tac-toe)       | HTML, CSS, JavaScript |
 
 <a name="links"></a>
 
