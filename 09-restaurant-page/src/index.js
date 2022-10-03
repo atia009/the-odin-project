@@ -1,9 +1,7 @@
 import Home from './home.js';
 
 function component() {
-  const element = Home();
-
-  return element;
+  Home();
 }
 
-document.querySelector('#content').appendChild(component());
+component();

@@ -1,4 +1,4 @@
-import {createHTMLfromArray} from "./functions";
+import {appendArrayToElement, createHTMLfromArray} from "./functions";
 
 const Home = () => {
   const pages = ['Home', 'Menu', 'Contact'];
@@ -27,7 +27,6 @@ const Home = () => {
 
 
   // dom
-  const element = document.createElement(`div`);
   const header = document.createElement('header');
   const nav = document.createElement(`nav`);
   const main = document.createElement('main');
@@ -60,14 +59,11 @@ const Home = () => {
     <p>${location}</p>
   </section>
 </section>`;
-element.appendChild(main);
 
 // footer
 footer.innerHTML = createHTMLfromArray(copyright).join(``);
-element.appendChild(footer);
+appendArrayToElement([header, main, footer], document.querySelector('#content'));
 
-
-  return element;
 };
 
 export default Home;
