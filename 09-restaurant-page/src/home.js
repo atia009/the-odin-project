@@ -1,3 +1,5 @@
+import {createHTMLfromArray} from "./functions";
+
 const Home = () => {
   const pages = ['Home', 'Menu', 'Contact'];
   const title = {
@@ -25,24 +27,15 @@ const Home = () => {
 
 
   // dom
-  const element = document.createElement('div');
+  const element = document.createElement(`div`);
   const header = document.createElement('header');
   const nav = document.createElement(`nav`);
   const main = document.createElement('main');
   const footer = document.createElement('footer');
 
-  // functions
-  function createHTMLfromArray(array) {
-    const arrayHTML = array.map(item => {
-      return `<li>${item}</li>`;
-    })
-    return arrayHTML.join(``);
-  }
-
   // header
   header.appendChild(nav);
-  nav.innerHTML = createHTMLfromArray(pages);
-  element.appendChild(header);
+  nav.innerHTML = createHTMLfromArray(pages).join(``);
 
   // main
   main.innerHTML = `<section>
@@ -59,7 +52,7 @@ const Home = () => {
   <section>
     <h2>Hours</h2>
     <ul>
-     ${createHTMLfromArray(hours)}
+     ${createHTMLfromArray(hours).join(``)}
     </ul>
   </section>
   <section>
@@ -70,7 +63,7 @@ const Home = () => {
 element.appendChild(main);
 
 // footer
-footer.innerHTML = createHTMLfromArray(copyright);
+footer.innerHTML = createHTMLfromArray(copyright).join(``);
 element.appendChild(footer);
 
 
