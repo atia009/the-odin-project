@@ -1,13 +1,15 @@
 import {appendArrayToElement, createHTMLfromArray} from "./functions";
+import Plant from './plant.png';
+import Chickpea from  './chickpea.png';
 
 const Home = () => {
   const pages = ['Home', 'Menu', 'Contact'];
   const title = {
-    img: `../src/chickpea.png`,
+    img: Chickpea
   };
   const about = {
     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, numquam! Nihil cum illo laudantium ipsa consequuntur earum corporis libero fugit?`,
-    img: `../src/plant.png`
+    img: Plant
   };
   const hours = [
     `Sunday: 5am - 7pm`,
@@ -63,7 +65,6 @@ const Home = () => {
 // footer
 footer.innerHTML = createHTMLfromArray(copyright).join(``);
 appendArrayToElement([header, main, footer], document.querySelector('#content'));
-
 };
 
 export default Home;
