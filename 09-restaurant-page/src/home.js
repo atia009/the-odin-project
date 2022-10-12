@@ -1,4 +1,4 @@
-import {appendArrayToElement, createHTMLfromArray} from "./functions";
+import {appendArrayToElement, createHTMLfromArray} from './functions.js';
 import Plant from './plant.png';
 import Chickpea from  './chickpea.png';
 
@@ -14,7 +14,7 @@ const Home = () => {
   const hours = [
     `Sunday: 5am - 7pm`,
     `Monday: 5am - 9pm`,
-    `Tuesday: 5am - 9pm`,
+    `Tuesday: 5am - 9pm`, 
     `Wednesday: 5am - 9pm`,
     `Thursday: 5am - 9pm`,
     `Friday: 5am - 8pm`,
@@ -36,7 +36,7 @@ const Home = () => {
 
   // header
   header.appendChild(nav);
-  nav.innerHTML = createHTMLfromArray(pages).join(``);
+  nav.innerHTML = `<ul class="tabs">${createHTMLfromArray(pages, `tab-item`).join(``)}</ul>`;
 
   // main
   main.innerHTML = `<section>

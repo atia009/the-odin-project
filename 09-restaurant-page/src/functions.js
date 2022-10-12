@@ -4,9 +4,9 @@ function appendArrayToElement(array, element) {
   })
 }
 
-function createHTMLfromArray(array) {
+function createHTMLfromArray(array, className = '') {
   const arrayHTML = array.map(item => {
-    return `<li>${item}</li>`;
+    return `<li class="${className}">${item}</li>`;
   });
   return arrayHTML;
 }
